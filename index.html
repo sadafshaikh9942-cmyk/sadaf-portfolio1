@@ -1,129 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Sadafmade.it — Cinematic Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>Sadafmade.it</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="bg-black text-white font-sans overflow-x-hidden">
+<body class="bg-black text-white font-sans">
 
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/40 border-b border-neutral-800 px-8 py-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold tracking-widest">Sadafmade.it</h1>
-    <a href="#contact" class="rounded-xl bg-white text-black px-6 py-2 hover:scale-105 transition">
-      Collaborate
-    </a>
-  </nav>
+<!-- NAVBAR -->
+<header class="flex justify-between items-center px-10 py-6 bg-black fixed w-full z-50">
+  <h1 class="text-2xl font-bold tracking-widest">Sadafmade.it</h1>
+  <a href="https://www.instagram.com/sadafmade.it/" target="_blank"
+     class="border border-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">
+     View Instagram
+  </a>
+</header>
 
-  <!-- HERO -->
-  <section class="relative h-screen flex items-center justify-center text-center">
-    <video autoplay loop muted class="absolute w-full h-full object-cover opacity-40">
-      <source src="hero-video.mp4" type="video/mp4" />
-    </video>
+<!-- HERO SECTION -->
+<section class="h-screen flex flex-col justify-center items-center text-center px-6">
 
-    <div class="relative z-10 px-6">
-      <h1 class="text-6xl md:text-8xl font-semibold tracking-tight">
-        Stories. In Motion.
-      </h1>
+  <h2 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+    Documenting Random Stories,<br>One Frame at a Time.
+  </h2>
 
-      <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-        Premium cinematic storytelling crafted in Pune.
-        Digital Creator documenting random stories, one frame at a time.
-      </p>
+  <p class="text-neutral-400 text-lg mb-8">
+    Digital Creator • Pune 📍 <br>
+    223K+ Total Views
+  </p>
 
-      <div class="mt-10 flex justify-center gap-6">
-        <a href="#featured" class="rounded-xl px-8 py-4 text-lg bg-white text-black hover:scale-105 transition">
-          Watch Featured
-        </a>
-
-        <a href="https://www.instagram.com/sadafmade.it" target="_blank"
-          class="rounded-xl px-8 py-4 text-lg bg-white text-black hover:scale-105 transition">
-          View Instagram
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED -->
-  <section id="featured" class="py-24 px-8">
-    <h2 class="text-3xl font-semibold mb-12">Trending Projects</h2>
-
-    <div class="flex gap-8 overflow-x-auto">
-      <iframe src="https://www.instagram.com/reel/DPMDQ9ejRjd/embed"
-        class="min-w-[350px] h-[500px] rounded-2xl bg-neutral-900"></iframe>
-
-      <iframe src="https://www.instagram.com/reel/DP-vWzHExxb/embed"
-        class="min-w-[350px] h-[500px] rounded-2xl bg-neutral-900"></iframe>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="py-24 bg-neutral-950 text-center">
-    <h2 class="text-5xl font-semibold mb-12">Built For Impact.</h2>
-
-    <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto text-3xl font-light">
-      <div>223K+ Total Views</div>
-      <div>Growing Reel Portfolio</div>
-      <div>Cinematic Storytelling</div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="py-24 px-8">
-    <h2 class="text-3xl font-semibold mb-16 text-center">Services</h2>
-
-    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-      <div class="bg-neutral-900 rounded-3xl p-10 border border-neutral-800 hover:scale-105 transition">
-        <h3 class="text-xl font-medium mb-4">Cinematic Reels Editing</h3>
-        <p class="text-gray-400 text-sm">
-          Premium visual storytelling with professional color grading and high-end editing workflow.
-        </p>
-      </div>
-
-      <div class="bg-neutral-900 rounded-3xl p-10 border border-neutral-800 hover:scale-105 transition">
-        <h3 class="text-xl font-medium mb-4">Brand Campaigns</h3>
-        <p class="text-gray-400 text-sm">
-          High-impact branded content crafted for modern audiences.
-        </p>
-      </div>
-
-      <div class="bg-neutral-900 rounded-3xl p-10 border border-neutral-800 hover:scale-105 transition">
-        <h3 class="text-xl font-medium mb-4">Creative Direction</h3>
-        <p class="text-gray-400 text-sm">
-          Strategic storytelling and premium visual execution.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="py-24 px-6 text-center bg-neutral-950">
-    <h2 class="text-4xl font-semibold mb-6">Let’s Create Something Powerful.</h2>
-    <p class="text-gray-400 mb-12 text-lg">
-      For collaborations and creative inquiries, connect via Instagram DM.
-    </p>
-
-    <a href="https://www.instagram.com/sadafmade.it" target="_blank"
-      class="rounded-xl px-10 py-4 text-lg bg-white text-black hover:scale-105 transition">
-      Send Inquiry
+  <div class="flex gap-6">
+    <a href="https://www.instagram.com/sadafmade.it/" target="_blank"
+       class="bg-white text-black px-8 py-3 rounded-full font-semibold hover:scale-105 transition">
+       Watch Work
     </a>
 
-    <div class="mt-16 text-gray-400">
-      <p class="hover:text-white transition cursor-pointer">
-        @sadafmade.it
-      </p>
-      <p class="mt-4">Managed by @_sadaff.ff</p>
-    </div>
-  </section>
+    <a href="https://www.instagram.com/sadafmade.it/" target="_blank"
+       class="border border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition">
+       DM For Collab
+    </a>
+  </div>
 
-  <footer class="py-8 text-center text-gray-600 border-t border-neutral-800">
-    © 2026 Sadafmade.it — Premium Cinematic Visuals
-  </footer>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="px-10 py-24 bg-neutral-950 text-center">
+
+  <h3 class="text-4xl font-bold mb-6">What I Do</h3>
+
+  <p class="text-neutral-400 max-w-3xl mx-auto leading-relaxed text-lg">
+    I create cinematic edits, emotional storytelling reels, and high-impact visuals 
+    that capture moments in their purest form.  
+    From aesthetic travel edits to dramatic storytelling cuts — every frame is intentional.
+  </p>
+
+</section>
+
+<!-- HOW I WORK -->
+<section class="px-10 py-24 text-center">
+
+  <h3 class="text-4xl font-bold mb-12">How I Create</h3>
+
+  <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+
+    <div>
+      <h4 class="text-2xl font-semibold mb-4">Concept</h4>
+      <p class="text-neutral-400">
+        Every video starts with a story idea. Mood, emotion and vibe come first.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="text-2xl font-semibold mb-4">Shoot</h4>
+      <p class="text-neutral-400">
+        Capturing natural light, smooth movement and cinematic frames.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="text-2xl font-semibold mb-4">Edit</h4>
+      <p class="text-neutral-400">
+        Professional color grading, sound design and storytelling cuts.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FEATURED REELS -->
+<section class="px-10 py-24 bg-neutral-950">
+
+  <h3 class="text-4xl font-bold mb-12 text-center">Featured Work</h3>
+
+  <div class="flex gap-8 overflow-x-auto pb-6">
+
+    <iframe src="https://www.instagram.com/reel/DPMDQ9ejRjd/embed"
+      class="min-w-[350px] h-[500px] rounded-2xl bg-black"></iframe>
+
+    <iframe src="https://www.instagram.com/reel/DP-vWzHExxb/embed"
+      class="min-w-[350px] h-[500px] rounded-2xl bg-black"></iframe>
+
+    <iframe src="https://www.instagram.com/reel/DSkNxg8E1fC/embed"
+      class="min-w-[350px] h-[500px] rounded-2xl bg-black"></iframe>
+
+    <iframe src="https://www.instagram.com/reel/DTIyKZLjUHR/embed"
+      class="min-w-[350px] h-[500px] rounded-2xl bg-black"></iframe>
+
+  </div>
+
+</section>
+
+<!-- COLLAB SECTION -->
+<section class="px-10 py-24 text-center">
+
+  <h3 class="text-4xl font-bold mb-6">Collaborations & Paid Edits</h3>
+
+  <p class="text-neutral-400 text-lg mb-8">
+    Available for brand collaborations, cinematic edits, creative campaigns and paid projects.  
+    For inquiries, you can also DM directly on Instagram.
+  </p>
+
+  <a href="https://www.instagram.com/sadafmade.it/" target="_blank"
+     class="bg-white text-black px-10 py-4 rounded-full font-semibold hover:scale-105 transition">
+     DM For Inquiries
+  </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center py-10 text-neutral-600 border-t border-neutral-800">
+  <p>© 2026 Sadafmade.it — Cinematic Visual Storytelling</p>
+  <p class="mt-2">Managed by @_sadaff.ff</p>
+</footer>
 
 </body>
 </html>
