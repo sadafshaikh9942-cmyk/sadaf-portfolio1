@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadafmade.it</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#000;color:#fff;text-align:center}
+nav{position:fixed;top:0;width:100%;padding:20px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center}
+nav h1{font-size:22px;letter-spacing:2px}
+nav a{background:#fff;color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px}
+.hero h2{font-size:60px;font-weight:800;margin-bottom:20px}
+.hero p{max-width:600px;color:#aaa;margin-bottom:40px}
+.btn{display:inline-block;padding:15px 30px;background:#fff;color:#000;border-radius:10px;text-decoration:none;font-weight:600;margin:10px}
+.stats{padding:100px 20px;background:#111}
+.stats h3{font-size:40px;margin-bottom:20px}
+.footer{padding:40px;background:#000;border-top:1px solid #222;color:#666}
+</style>
+</head>
+<body>
+
+<nav>
+<h1>Sadafmade.it</h1>
+<a href="https://www.instagram.com/sadafmade.it" target="_blank">Collaborate</a>
+</nav>
+
+<section class="hero">
+<h2>Stories. In Motion.</h2>
+<p>Premium cinematic storytelling crafted in Pune. Digital Creator documenting random stories, one frame at a time.</p>
+<a class="btn" href="https://www.instagram.com/sadafmade.it" target="_blank">View Instagram</a>
+</section>
+
+<section class="stats">
+<h3>223K+ Total Views</h3>
+<p>Growing Reel Portfolio • Cinematic Storytelling • Brand Collaborations</p>
+</section>
+
+<section class="hero">
+<h2>Let’s Create Something Powerful.</h2>
+<p>For collaborations and creative inquiries, connect via Instagram DM — let’s build something unforgettable.</p>
+<a class="btn" href="https://www.instagram.com/sadafmade.it" target="_blank">DM on Instagram</a>
+</section>
+
+<div class="footer">
+© 2026 Sadafmade.it — Premium Cinematic Visuals
+</div>
+
+</body>
+</html>
