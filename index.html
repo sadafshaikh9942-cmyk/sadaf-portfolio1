@@ -1,218 +1,311 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Instagram, Mail } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-export default function CinematicPortfolio() {
+<title>Sadafmade.it | Cinematic Creator</title>
 
-  const goToInstagram = () => {
-    window.open("https://www.instagram.com/sadafmade.it", "_blank");
-  };
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  const sendEmail = () => {
-    window.location.href = "mailto:sadafmadeit@gamil.com";
-  };
+<style>
 
-  const scrollToFeatured = () => {
-    document.getElementById("featured")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  return (
-    <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden">
-
-      {/* NAVBAR */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/40 border-b border-neutral-800 px-8 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold tracking-widest text-white">
-          Sadafmade.it
-        </h1>
-        <Button
-          onClick={scrollToContact}
-          className="rounded-xl bg-white text-black px-6 hover:scale-105 transition"
-        >
-          Collaborate
-        </Button>
-      </nav>
-
-      {/* HERO SECTION */}
-      <section className="relative h-screen flex items-center justify-center text-center">
-        <video autoPlay loop muted className="absolute w-full h-full object-cover opacity-40">
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-
-        <div className="relative z-10 px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-6xl md:text-8xl font-semibold tracking-tight"
-          >
-            Stories. In Motion.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
-          >
-            Premium cinematic storytelling crafted in Pune.
-            Digital Creator documenting random stories, one frame at a time.
-          </motion.p>
-
-          <div className="mt-10 flex justify-center gap-6">
-            <Button
-              onClick={scrollToFeatured}
-              className="rounded-xl px-8 py-6 text-lg bg-white text-black hover:scale-105 transition"
-            >
-              Watch Featured
-            </Button>
-
-            <Button
-              onClick={goToInstagram}
-              className="rounded-xl px-8 py-6 text-lg bg-white text-black hover:scale-105 transition"
-            >
-              View Instagram
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* REELS SECTION */}
-      <section id="featured" className="py-24 px-8">
-        <h2 className="text-3xl font-semibold mb-12">Trending Projects</h2>
-
-        <div className="flex gap-8 overflow-x-auto scrollbar-hide">
-          {[
-            "DPMDQ9ejRjd",
-            "DP-vWzHExxb",
-            "DSkNxg8E1fC",
-            "DTIyKZLjUHR"
-          ].map((id, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.3 }}
-              className="min-w-[350px]"
-            >
-              <Card className="bg-neutral-900 rounded-2xl shadow-2xl overflow-hidden">
-                <CardContent className="p-0">
-                  <iframe
-                    src={`https://www.instagram.com/reel/${id}/embed`}
-                    className="w-full h-[500px]"
-                  ></iframe>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="py-24 bg-neutral-950 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-5xl font-semibold mb-12"
-        >
-          Built For Impact.
-        </motion.h2>
-
-        <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto text-3xl font-light">
-          <div>223K+ Total Views</div>
-          <div>Growing Reel Portfolio</div>
-          <div>Cinematic Storytelling</div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="py-24 px-8">
-        <h2 className="text-3xl font-semibold mb-16 text-center">Services</h2>
-
-        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-          {[
-            "Cinematic Reels Editing",
-            "Brand Campaigns",
-            "Creative Direction"
-          ].map((service, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              className="bg-neutral-900 rounded-3xl p-10 border border-neutral-800"
-            >
-              <h3 className="text-xl font-medium mb-4">{service}</h3>
-              <p className="text-gray-400 text-sm">
-                Premium visual storytelling with professional color grading and high-end editing workflow.
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="py-24 px-6 text-center bg-neutral-950">
-        <h2 className="text-4xl font-semibold mb-6">
-          Let’s Create Something Powerful.
-        </h2>
-
-        <p className="text-gray-400 mb-12 text-lg">
-          For collaborations and creative inquiries, contact me via Instagram or Email.
-        </p>
-
-        <div className="max-w-2xl mx-auto space-y-6">
-          <Input placeholder="Your Name" className="bg-black border-neutral-800" />
-          <Input placeholder="Your Email" className="bg-black border-neutral-800" />
-          <Textarea placeholder="Project Details" className="bg-black border-neutral-800" />
-
-          <Button
-            onClick={sendEmail}
-            className="w-full rounded-xl py-6 text-lg bg-white text-black hover:scale-105 transition"
-          >
-            Send Email
-          </Button>
-
-          <Button
-            onClick={goToInstagram}
-            className="w-full rounded-xl py-6 text-lg bg-neutral-800 hover:scale-105 transition"
-          >
-            DM on Instagram
-          </Button>
-        </div>
-
-        <div className="mt-16 text-gray-400">
-          <Instagram className="mx-auto mb-3" />
-          <span
-            onClick={goToInstagram}
-            className="cursor-pointer hover:text-white transition"
-          >
-            @sadafmade.it
-          </span>
-
-          <br />
-
-          <Mail className="mx-auto mt-6 mb-3" />
-          <span
-            onClick={sendEmail}
-            className="cursor-pointer hover:text-white transition"
-          >
-            sadafmadeit@gamil.com
-          </span>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-8 text-center text-gray-600 border-t border-neutral-800">
-        © {new Date().getFullYear()} Sadafmade.it — Premium Cinematic Visuals
-      </footer>
-
-    </div>
-  );
+body{
+margin:0;
+font-family:Poppins;
+background:black;
+color:white;
+overflow-x:hidden;
 }
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav h1{
+font-size:22px;
+letter-spacing:2px;
+}
+
+button{
+padding:12px 24px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0.4;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:700px;
+}
+
+.hero h1{
+font-size:70px;
+margin:0;
+}
+
+.hero p{
+color:#bbb;
+font-size:18px;
+margin-top:20px;
+}
+
+.buttons{
+margin-top:30px;
+}
+
+.buttons button{
+margin:10px;
+background:white;
+color:black;
+}
+
+.section{
+padding:120px 40px;
+}
+
+.reels{
+display:flex;
+gap:30px;
+overflow-x:auto;
+}
+
+.reel{
+min-width:350px;
+}
+
+iframe{
+width:100%;
+height:500px;
+border:none;
+border-radius:20px;
+}
+
+.stats{
+text-align:center;
+background:#0a0a0a;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:40px;
+font-size:28px;
+margin-top:40px;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.service{
+background:#111;
+padding:30px;
+border-radius:20px;
+}
+
+.contact{
+text-align:center;
+background:#0a0a0a;
+}
+
+input, textarea{
+width:100%;
+padding:15px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #333;
+background:black;
+color:white;
+}
+
+footer{
+text-align:center;
+padding:30px;
+border-top:1px solid #222;
+color:#777;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>Sadafmade.it</h1>
+<button onclick="scrollContact()">Collaborate</button>
+</nav>
+
+<section class="hero">
+
+<video autoplay muted loop>
+<source src="hero-video.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content">
+
+<h1>Stories. In Motion.</h1>
+
+<p>
+Premium cinematic storytelling crafted in Pune.  
+Digital Creator documenting random stories, one frame at a time.
+</p>
+
+<div class="buttons">
+<button onclick="scrollFeatured()">Watch Featured</button>
+<button onclick="openInstagram()">View Instagram</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="featured">
+
+<h2>Trending Projects</h2>
+
+<div class="reels">
+
+<div class="reel">
+<iframe src="https://www.instagram.com/reel/DPMDQ9ejRjd/embed"></iframe>
+</div>
+
+<div class="reel">
+<iframe src="https://www.instagram.com/reel/DP-vWzHExxb/embed"></iframe>
+</div>
+
+<div class="reel">
+<iframe src="https://www.instagram.com/reel/DSkNxg8E1fC/embed"></iframe>
+</div>
+
+<div class="reel">
+<iframe src="https://www.instagram.com/reel/DTIyKZLjUHR/embed"></iframe>
+</div>
+
+</div>
+
+</section>
+
+<section class="section stats">
+
+<h2>Built For Impact</h2>
+
+<div class="stats-grid">
+<div>223K+ Total Views</div>
+<div>Growing Reel Portfolio</div>
+<div>Cinematic Storytelling</div>
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 style="text-align:center">Services</h2>
+
+<div class="services">
+
+<div class="service">
+<h3>Cinematic Reels Editing</h3>
+<p>Professional color grading and high-end cinematic editing.</p>
+</div>
+
+<div class="service">
+<h3>Brand Campaigns</h3>
+<p>Creative storytelling for brands and businesses.</p>
+</div>
+
+<div class="service">
+<h3>Creative Direction</h3>
+<p>Planning visual concepts and storytelling strategies.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section contact" id="contact">
+
+<h2>Let’s Create Something Powerful</h2>
+
+<p>For collaborations message via Instagram or Email.</p>
+
+<div style="max-width:500px;margin:auto">
+
+<input placeholder="Your Name">
+<input placeholder="Your Email">
+<textarea placeholder="Project Details"></textarea>
+
+<button onclick="sendEmail()" style="width:100%;background:white;color:black;">
+Send Inquiry
+</button>
+
+</div>
+
+<br><br>
+
+<p onclick="openInstagram()" style="cursor:pointer">@sadafmade.it</p>
+
+<p onclick="sendEmail()" style="cursor:pointer">
+sadafmadeit@gamil.com
+</p>
+
+</section>
+
+<footer>
+
+© 2026 Sadafmade.it — Premium Cinematic Visuals
+
+</footer>
+
+<script>
+
+function openInstagram(){
+window.open("https://www.instagram.com/sadafmade.it","_blank");
+}
+
+function scrollFeatured(){
+document.getElementById("featured").scrollIntoView({behavior:"smooth"});
+}
+
+function scrollContact(){
+document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+}
+
+function sendEmail(){
+window.location.href="mailto:sadafmadeit@gamil.com";
+}
+
+</script>
+
+</body>
+</html>
