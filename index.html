@@ -1,214 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sadafmade.it</title>
+<section class="section contact" id="contact">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<h2>Let’s Create Something Powerful</h2>
 
-<style>
+<p>For collaborations click below</p>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+<div class="contact-menu">
 
-body{
-background:black;
-color:white;
-overflow-x:hidden;
-}
+<button class="menu-btn" onclick="toggleMenu()">⋮</button>
 
-/* NAVBAR */
+<div id="contactOptions" class="menu-options">
 
-.navbar{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-
-.logo{
-font-size:20px;
-font-weight:600;
-}
-
-.menu{
-position:relative;
-cursor:pointer;
-}
-
-.menu-dots{
-font-size:28px;
-}
-
-.dropdown{
-position:absolute;
-right:0;
-top:40px;
-background:#111;
-border-radius:10px;
-padding:10px 0;
-display:none;
-}
-
-.dropdown a{
-display:block;
-padding:10px 20px;
-color:white;
-text-decoration:none;
-}
-
-.dropdown a:hover{
-background:#222;
-}
-
-/* HERO */
-
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-flex-direction:column;
-background:url("https://images.unsplash.com/photo-1492724441997-5dc865305da7") center/cover;
-}
-
-.hero h1{
-font-size:60px;
-letter-spacing:2px;
-}
-
-.hero p{
-margin-top:10px;
-font-size:18px;
-color:#ccc;
-}
-
-/* REELS */
-
-.section{
-padding:100px 40px;
-}
-
-.section h2{
-font-size:28px;
-margin-bottom:40px;
-}
-
-.reels{
-display:flex;
-gap:20px;
-overflow-x:auto;
-}
-
-.reel{
-min-width:280px;
-height:500px;
-border-radius:20px;
-overflow:hidden;
-transition:0.4s;
-}
-
-.reel iframe{
-width:100%;
-height:100%;
-border:none;
-}
-
-.reel:hover{
-transform:scale(1.05);
-}
-
-/* FOOTER */
-
-footer{
-padding:40px;
-text-align:center;
-color:#aaa;
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-
-<div class="navbar">
-<div class="logo">sadafmade.it</div>
-
-<div class="menu">
-<div class="menu-dots" onclick="toggleMenu()">⋯</div>
-
-<div class="dropdown" id="dropdown">
-<a href="mailto:sadafmadeit@gmail.com">Email</a>
-<a href="https://www.instagram.com/sadafmade.it" target="_blank">Instagram</a>
+<div onclick="openInstagram()">
+Instagram
 </div>
 
-</div>
-</div>
-
-<!-- HERO -->
-
-<div class="hero">
-
-<h1>Sadafmade.it</h1>
-<p>Documenting stories one frame at a time</p>
-
-</div>
-
-<!-- REELS -->
-
-<div class="section">
-
-<h2>Featured Reels</h2>
-
-<div class="reels">
-
-<div class="reel">
-<iframe src="https://www.instagram.com/reel/DSkNxg8E1fC/embed"></iframe>
-</div>
-
-<div class="reel">
-<iframe src="https://www.instagram.com/reel/DTIyKZLjUHR/embed"></iframe>
+<div onclick="sendEmail()">
+Email
 </div>
 
 </div>
 
 </div>
 
-<footer>
-
-<p>© 2026 sadafmade.it</p>
-
-</footer>
-
-<script>
-
-function toggleMenu(){
-
-const menu = document.getElementById("dropdown");
-
-if(menu.style.display === "block"){
-menu.style.display="none";
-}else{
-menu.style.display="block";
-}
-
-}
-
-</script>
-
-</body>
-</html>
+</section>
