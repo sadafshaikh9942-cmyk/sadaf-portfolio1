@@ -1,139 +1,218 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Sadafmade.it</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Instagram, Mail } from "lucide-react";
 
-<body class="bg-black text-white font-sans">
+export default function CinematicPortfolio() {
 
-<!-- NAVBAR -->
-<header class="flex justify-between items-center px-10 py-6 bg-black fixed w-full z-50">
-  <h1 class="text-2xl font-bold tracking-widest">Sadafmade.it</h1>
-  <a href="https://www.instagram.com/sadafmade.it/" target="_blank"
-     class="border border-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">
-     View Instagram
-  </a>
-</header>
+  const goToInstagram = () => {
+    window.open("https://www.instagram.com/sadafmade.it", "_blank");
+  };
 
-<!-- HERO SECTION -->
-<section class="h-screen flex flex-col justify-center items-center text-center px-6">
+  const sendEmail = () => {
+    window.location.href = "mailto:sadafmadeit@gamil.com";
+  };
 
-  <h2 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-    Documenting Random Stories,<br>One Frame at a Time.
-  </h2>
+  const scrollToFeatured = () => {
+    document.getElementById("featured")?.scrollIntoView({ behavior: "smooth" });
+  };
 
-  <p class="text-neutral-400 text-lg mb-8">
-    Digital Creator • Pune 📍 <br>
-    223K+ Total Views
-  </p>
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
-  <div class="flex gap-6">
-    <a href="https://www.instagram.com/sadafmade.it/" target="_blank"
-       class="bg-white text-black px-8 py-3 rounded-full font-semibold hover:scale-105 transition">
-       Watch Work
-    </a>
+  return (
+    <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden">
 
-    <a href="https://www.instagram.com/sadafmade.it/" target="_blank"
-       class="border border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition">
-       DM For Collab
-    </a>
-  </div>
+      {/* NAVBAR */}
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/40 border-b border-neutral-800 px-8 py-4 flex justify-between items-center">
+        <h1 className="text-2xl font-bold tracking-widest text-white">
+          Sadafmade.it
+        </h1>
+        <Button
+          onClick={scrollToContact}
+          className="rounded-xl bg-white text-black px-6 hover:scale-105 transition"
+        >
+          Collaborate
+        </Button>
+      </nav>
 
-</section>
+      {/* HERO SECTION */}
+      <section className="relative h-screen flex items-center justify-center text-center">
+        <video autoPlay loop muted className="absolute w-full h-full object-cover opacity-40">
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
 
-<!-- ABOUT SECTION -->
-<section class="px-10 py-24 bg-neutral-950 text-center">
+        <div className="relative z-10 px-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-6xl md:text-8xl font-semibold tracking-tight"
+          >
+            Stories. In Motion.
+          </motion.h1>
 
-  <h3 class="text-4xl font-bold mb-6">What I Do</h3>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
+          >
+            Premium cinematic storytelling crafted in Pune.
+            Digital Creator documenting random stories, one frame at a time.
+          </motion.p>
 
-  <p class="text-neutral-400 max-w-3xl mx-auto leading-relaxed text-lg">
-    I create cinematic edits, emotional storytelling reels, and high-impact visuals 
-    that capture moments in their purest form.  
-    From aesthetic travel edits to dramatic storytelling cuts — every frame is intentional.
-  </p>
+          <div className="mt-10 flex justify-center gap-6">
+            <Button
+              onClick={scrollToFeatured}
+              className="rounded-xl px-8 py-6 text-lg bg-white text-black hover:scale-105 transition"
+            >
+              Watch Featured
+            </Button>
 
-</section>
+            <Button
+              onClick={goToInstagram}
+              className="rounded-xl px-8 py-6 text-lg bg-white text-black hover:scale-105 transition"
+            >
+              View Instagram
+            </Button>
+          </div>
+        </div>
+      </section>
 
-<!-- HOW I WORK -->
-<section class="px-10 py-24 text-center">
+      {/* REELS SECTION */}
+      <section id="featured" className="py-24 px-8">
+        <h2 className="text-3xl font-semibold mb-12">Trending Projects</h2>
 
-  <h3 class="text-4xl font-bold mb-12">How I Create</h3>
+        <div className="flex gap-8 overflow-x-auto scrollbar-hide">
+          {[
+            "DPMDQ9ejRjd",
+            "DP-vWzHExxb",
+            "DSkNxg8E1fC",
+            "DTIyKZLjUHR"
+          ].map((id, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.3 }}
+              className="min-w-[350px]"
+            >
+              <Card className="bg-neutral-900 rounded-2xl shadow-2xl overflow-hidden">
+                <CardContent className="p-0">
+                  <iframe
+                    src={`https://www.instagram.com/reel/${id}/embed`}
+                    className="w-full h-[500px]"
+                  ></iframe>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-  <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+      {/* STATS */}
+      <section className="py-24 bg-neutral-950 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl font-semibold mb-12"
+        >
+          Built For Impact.
+        </motion.h2>
 
-    <div>
-      <h4 class="text-2xl font-semibold mb-4">Concept</h4>
-      <p class="text-neutral-400">
-        Every video starts with a story idea. Mood, emotion and vibe come first.
-      </p>
+        <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto text-3xl font-light">
+          <div>223K+ Total Views</div>
+          <div>Growing Reel Portfolio</div>
+          <div>Cinematic Storytelling</div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-24 px-8">
+        <h2 className="text-3xl font-semibold mb-16 text-center">Services</h2>
+
+        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          {[
+            "Cinematic Reels Editing",
+            "Brand Campaigns",
+            "Creative Direction"
+          ].map((service, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              className="bg-neutral-900 rounded-3xl p-10 border border-neutral-800"
+            >
+              <h3 className="text-xl font-medium mb-4">{service}</h3>
+              <p className="text-gray-400 text-sm">
+                Premium visual storytelling with professional color grading and high-end editing workflow.
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="py-24 px-6 text-center bg-neutral-950">
+        <h2 className="text-4xl font-semibold mb-6">
+          Let’s Create Something Powerful.
+        </h2>
+
+        <p className="text-gray-400 mb-12 text-lg">
+          For collaborations and creative inquiries, contact me via Instagram or Email.
+        </p>
+
+        <div className="max-w-2xl mx-auto space-y-6">
+          <Input placeholder="Your Name" className="bg-black border-neutral-800" />
+          <Input placeholder="Your Email" className="bg-black border-neutral-800" />
+          <Textarea placeholder="Project Details" className="bg-black border-neutral-800" />
+
+          <Button
+            onClick={sendEmail}
+            className="w-full rounded-xl py-6 text-lg bg-white text-black hover:scale-105 transition"
+          >
+            Send Email
+          </Button>
+
+          <Button
+            onClick={goToInstagram}
+            className="w-full rounded-xl py-6 text-lg bg-neutral-800 hover:scale-105 transition"
+          >
+            DM on Instagram
+          </Button>
+        </div>
+
+        <div className="mt-16 text-gray-400">
+          <Instagram className="mx-auto mb-3" />
+          <span
+            onClick={goToInstagram}
+            className="cursor-pointer hover:text-white transition"
+          >
+            @sadafmade.it
+          </span>
+
+          <br />
+
+          <Mail className="mx-auto mt-6 mb-3" />
+          <span
+            onClick={sendEmail}
+            className="cursor-pointer hover:text-white transition"
+          >
+            sadafmadeit@gamil.com
+          </span>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-8 text-center text-gray-600 border-t border-neutral-800">
+        © {new Date().getFullYear()} Sadafmade.it — Premium Cinematic Visuals
+      </footer>
+
     </div>
-
-    <div>
-      <h4 class="text-2xl font-semibold mb-4">Shoot</h4>
-      <p class="text-neutral-400">
-        Capturing natural light, smooth movement and cinematic frames.
-      </p>
-    </div>
-
-    <div>
-      <h4 class="text-2xl font-semibold mb-4">Edit</h4>
-      <p class="text-neutral-400">
-        Professional color grading, sound design and storytelling cuts.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- FEATURED REELS -->
-<section class="px-10 py-24 bg-neutral-950">
-
-  <h3 class="text-4xl font-bold mb-12 text-center">Featured Work</h3>
-
-  <div class="flex gap-8 overflow-x-auto pb-6">
-
-    <iframe src="https://www.instagram.com/reel/DPMDQ9ejRjd/embed"
-      class="min-w-[350px] h-[500px] rounded-2xl bg-black"></iframe>
-
-    <iframe src="https://www.instagram.com/reel/DP-vWzHExxb/embed"
-      class="min-w-[350px] h-[500px] rounded-2xl bg-black"></iframe>
-
-    <iframe src="https://www.instagram.com/reel/DSkNxg8E1fC/embed"
-      class="min-w-[350px] h-[500px] rounded-2xl bg-black"></iframe>
-
-    <iframe src="https://www.instagram.com/reel/DTIyKZLjUHR/embed"
-      class="min-w-[350px] h-[500px] rounded-2xl bg-black"></iframe>
-
-  </div>
-
-</section>
-
-<!-- COLLAB SECTION -->
-<section class="px-10 py-24 text-center">
-
-  <h3 class="text-4xl font-bold mb-6">Collaborations & Paid Edits</h3>
-
-  <p class="text-neutral-400 text-lg mb-8">
-    Available for brand collaborations, cinematic edits, creative campaigns and paid projects.  
-    For inquiries, you can also DM directly on Instagram.
-  </p>
-
-  <a href="https://www.instagram.com/sadafmade.it/" target="_blank"
-     class="bg-white text-black px-10 py-4 rounded-full font-semibold hover:scale-105 transition">
-     DM For Inquiries
-  </a>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="text-center py-10 text-neutral-600 border-t border-neutral-800">
-  <p>© 2026 Sadafmade.it — Cinematic Visual Storytelling</p>
-  <p class="mt-2">Managed by @_sadaff.ff</p>
-</footer>
-
-</body>
-</html>
+  );
+}
