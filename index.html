@@ -3,22 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadafmade.it</title>
 
-<title>Sadafmade.it | Cinematic Creator</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:Poppins;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
 background:black;
 color:white;
 overflow-x:hidden;
 }
 
-nav{
+/* NAVBAR */
+
+.navbar{
 position:fixed;
 top:0;
 width:100%;
@@ -26,134 +32,110 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 40px;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.4);
 backdrop-filter:blur(10px);
 z-index:1000;
 }
 
-nav h1{
-font-size:22px;
-letter-spacing:2px;
-}
-
-button{
-padding:12px 24px;
-border:none;
-border-radius:8px;
-cursor:pointer;
+.logo{
+font-size:20px;
 font-weight:600;
 }
+
+.menu{
+position:relative;
+cursor:pointer;
+}
+
+.menu-dots{
+font-size:28px;
+}
+
+.dropdown{
+position:absolute;
+right:0;
+top:40px;
+background:#111;
+border-radius:10px;
+padding:10px 0;
+display:none;
+}
+
+.dropdown a{
+display:block;
+padding:10px 20px;
+color:white;
+text-decoration:none;
+}
+
+.dropdown a:hover{
+background:#222;
+}
+
+/* HERO */
 
 .hero{
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
-position:relative;
-}
-
-.hero video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0.4;
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-max-width:700px;
+flex-direction:column;
+background:url("https://images.unsplash.com/photo-1492724441997-5dc865305da7") center/cover;
 }
 
 .hero h1{
-font-size:70px;
-margin:0;
+font-size:60px;
+letter-spacing:2px;
 }
 
 .hero p{
-color:#bbb;
+margin-top:10px;
 font-size:18px;
-margin-top:20px;
+color:#ccc;
 }
 
-.buttons{
-margin-top:30px;
-}
-
-.buttons button{
-margin:10px;
-background:white;
-color:black;
-}
+/* REELS */
 
 .section{
-padding:120px 40px;
+padding:100px 40px;
+}
+
+.section h2{
+font-size:28px;
+margin-bottom:40px;
 }
 
 .reels{
 display:flex;
-gap:30px;
+gap:20px;
 overflow-x:auto;
 }
 
 .reel{
-min-width:350px;
-}
-
-iframe{
-width:100%;
+min-width:280px;
 height:500px;
-border:none;
 border-radius:20px;
+overflow:hidden;
+transition:0.4s;
 }
 
-.stats{
-text-align:center;
-background:#0a0a0a;
-}
-
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:40px;
-font-size:28px;
-margin-top:40px;
-}
-
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.service{
-background:#111;
-padding:30px;
-border-radius:20px;
-}
-
-.contact{
-text-align:center;
-background:#0a0a0a;
-}
-
-input, textarea{
+.reel iframe{
 width:100%;
-padding:15px;
-margin:10px 0;
-border-radius:8px;
-border:1px solid #333;
-background:black;
-color:white;
+height:100%;
+border:none;
 }
+
+.reel:hover{
+transform:scale(1.05);
+}
+
+/* FOOTER */
 
 footer{
+padding:40px;
 text-align:center;
-padding:30px;
-border-top:1px solid #222;
-color:#777;
+color:#aaa;
 }
 
 </style>
@@ -161,48 +143,38 @@ color:#777;
 
 <body>
 
-<nav>
+<!-- NAVBAR -->
+
+<div class="navbar">
+<div class="logo">sadafmade.it</div>
+
+<div class="menu">
+<div class="menu-dots" onclick="toggleMenu()">⋯</div>
+
+<div class="dropdown" id="dropdown">
+<a href="mailto:sadafmadeit@gmail.com">Email</a>
+<a href="https://www.instagram.com/sadafmade.it" target="_blank">Instagram</a>
+</div>
+
+</div>
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
 <h1>Sadafmade.it</h1>
-<button onclick="scrollContact()">Collaborate</button>
-</nav>
-
-<section class="hero">
-
-<video autoplay muted loop>
-<source src="hero-video.mp4" type="video/mp4">
-</video>
-
-<div class="hero-content">
-
-<h1>Stories. In Motion.</h1>
-
-<p>
-Premium cinematic storytelling crafted in Pune.  
-Digital Creator documenting random stories, one frame at a time.
-</p>
-
-<div class="buttons">
-<button onclick="scrollFeatured()">Watch Featured</button>
-<button onclick="openInstagram()">View Instagram</button>
-</div>
+<p>Documenting stories one frame at a time</p>
 
 </div>
 
-</section>
+<!-- REELS -->
 
-<section class="section" id="featured">
+<div class="section">
 
-<h2>Trending Projects</h2>
+<h2>Featured Reels</h2>
 
 <div class="reels">
-
-<div class="reel">
-<iframe src="https://www.instagram.com/reel/DPMDQ9ejRjd/embed"></iframe>
-</div>
-
-<div class="reel">
-<iframe src="https://www.instagram.com/reel/DP-vWzHExxb/embed"></iframe>
-</div>
 
 <div class="reel">
 <iframe src="https://www.instagram.com/reel/DSkNxg8E1fC/embed"></iframe>
@@ -214,95 +186,26 @@ Digital Creator documenting random stories, one frame at a time.
 
 </div>
 
-</section>
-
-<section class="section stats">
-
-<h2>Built For Impact</h2>
-
-<div class="stats-grid">
-<div>223K+ Total Views</div>
-<div>Growing Reel Portfolio</div>
-<div>Cinematic Storytelling</div>
 </div>
-
-</section>
-
-<section class="section">
-
-<h2 style="text-align:center">Services</h2>
-
-<div class="services">
-
-<div class="service">
-<h3>Cinematic Reels Editing</h3>
-<p>Professional color grading and high-end cinematic editing.</p>
-</div>
-
-<div class="service">
-<h3>Brand Campaigns</h3>
-<p>Creative storytelling for brands and businesses.</p>
-</div>
-
-<div class="service">
-<h3>Creative Direction</h3>
-<p>Planning visual concepts and storytelling strategies.</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section contact" id="contact">
-
-<h2>Let’s Create Something Powerful</h2>
-
-<p>For collaborations message via Instagram or Email.</p>
-
-<div style="max-width:500px;margin:auto">
-
-<input placeholder="Your Name">
-<input placeholder="Your Email">
-<textarea placeholder="Project Details"></textarea>
-
-<button onclick="sendEmail()" style="width:100%;background:white;color:black;">
-Send Inquiry
-</button>
-
-</div>
-
-<br><br>
-
-<p onclick="openInstagram()" style="cursor:pointer">@sadafmade.it</p>
-
-<p onclick="sendEmail()" style="cursor:pointer">
-sadafmadeit@gamil.com
-</p>
-
-</section>
 
 <footer>
 
-© 2026 Sadafmade.it — Premium Cinematic Visuals
+<p>© 2026 sadafmade.it</p>
 
 </footer>
 
 <script>
 
-function openInstagram(){
-window.open("https://www.instagram.com/sadafmade.it","_blank");
+function toggleMenu(){
+
+const menu = document.getElementById("dropdown");
+
+if(menu.style.display === "block"){
+menu.style.display="none";
+}else{
+menu.style.display="block";
 }
 
-function scrollFeatured(){
-document.getElementById("featured").scrollIntoView({behavior:"smooth"});
-}
-
-function scrollContact(){
-document.getElementById("contact").scrollIntoView({behavior:"smooth"});
-}
-
-function sendEmail(){
-window.location.href="mailto:sadafmadeit@gamil.com";
 }
 
 </script>
