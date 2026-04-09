@@ -3,168 +3,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadafmade.it — Cinematic Portfolio</title>
 
-<title>Sadafmade.it — Cinematic Storytelling</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
+:root{
+--yellow:#FFB703;
+--yellow-soft:#FFE082;
+--dark:#121212;
+--blue:#4361EE;
+--white:#ffffff;
+}
+
 body{
 margin:0;
-font-family:Poppins;
-background:black;
-color:white;
+font-family:'Poppins', sans-serif;
+background:linear-gradient(180deg,var(--yellow),var(--yellow-soft));
+color:var(--dark);
 overflow-x:hidden;
+cursor:none;
+text-align:center;
 }
 
+/* Cursor */
+.cursor{
+width:16px;
+height:16px;
+border-radius:50%;
+background:var(--blue);
+position:fixed;
+pointer-events:none;
+z-index:2000;
+transform:translate(-50%,-50%);
+transition:0.15s;
+box-shadow:0 0 10px var(--blue),0 0 25px var(--yellow);
+}
+.cursor-grow{transform:scale(2.5);background:var(--yellow);}
+.cursor-click{transform:scale(1.5);background:white;}
+
+/* Navbar */
 nav{
 position:fixed;
-top:0;
-width:100%;
+top:0;width:100%;
 display:flex;
-justify-content:space-between;
+justify-content:center;
 align-items:center;
-padding:20px 25px;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
+padding:15px 40px;
+background:rgba(255,255,255,0.4);
+backdrop-filter:blur(12px);
 z-index:1000;
-box-sizing:border-box;
 }
 
-nav h1{
-font-size:22px;
-letter-spacing:2px;
+nav h3{
+position:absolute;
+left:40px;
 }
 
 nav button{
-padding:10px 20px;
+background:var(--dark);
+color:white;
 border:none;
-border-radius:8px;
-cursor:pointer;
+padding:10px 22px;
+border-radius:30px;
 font-weight:600;
-background:white;
-color:black;
-margin-right:10px;
+cursor:pointer;
 }
+nav button:hover{background:var(--blue);}
 
+/* Hero */
 .hero{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-text-align:center;
-position:relative;
-}
-
-.hero video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0.4;
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-max-width:700px;
 padding:20px;
 }
 
 .hero h1{
-font-size:70px;
-margin:0;
+font-size:64px;
+background:linear-gradient(90deg,var(--dark),var(--blue));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
-color:#bbb;
-font-size:18px;
+max-width:650px;
+margin:20px auto;
+font-weight:700;
+line-height:1.7;
+}
+
+.hero button{
 margin-top:20px;
-}
-
-.buttons{
-margin-top:30px;
-}
-
-.buttons button{
-margin:10px;
-background:white;
-color:black;
-padding:12px 24px;
+background:var(--dark);
+color:white;
+padding:12px 26px;
 border:none;
-border-radius:8px;
-cursor:pointer;
+border-radius:30px;
 font-weight:600;
+cursor:pointer;
 }
+.hero button:hover{background:var(--blue);}
 
+/* Sections */
 .section{
-padding:120px 40px;
+padding:100px 20px;
+max-width:1100px;
+margin:auto;
 }
 
+h2{
+color:var(--blue);
+font-size:32px;
+margin-bottom:30px;
+}
+
+/* Reels */
 .reels{
-display:flex;
-gap:30px;
-overflow-x:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
 }
 
 .reel{
-min-width:350px;
-}
-
-iframe{
-width:100%;
-height:500px;
-border:none;
 border-radius:20px;
+overflow:hidden;
+background:white;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+transition:0.3s;
 }
 
-.stats{
-text-align:center;
-background:#0a0a0a;
+.reel iframe{
+width:100%;
+height:400px;
+border:none;
 }
 
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:40px;
-font-size:28px;
-margin-top:40px;
+.reel:hover{
+transform:translateY(-10px) scale(1.02);
 }
 
+/* Services */
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
 }
 
 .service{
-background:#111;
+background:white;
 padding:30px;
 border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-.contact{
-text-align:center;
-background:#0a0a0a;
-}
-
-input, textarea{
+/* Contact */
+.contact input, .contact textarea{
 width:100%;
-padding:15px;
+padding:14px;
 margin:10px 0;
-border-radius:8px;
-border:1px solid #333;
-background:black;
-color:white;
-color:white;
+border-radius:10px;
+border:none;
 }
+
+.contact button{
+width:100%;
+padding:14px;
+background:var(--dark);
+color:white;
+border:none;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+}
+.contact button:hover{background:var(--blue);}
 
 footer{
-text-align:center;
 padding:30px;
-border-top:1px solid #222;
-color:#777;
+font-weight:600;
+}
+
+/* Animation */
+.fade-up{
+opacity:0;
+transform:translateY(30px);
+transition:0.8s;
+}
+.fade-up.show{
+opacity:1;
+transform:translateY(0);
 }
 
 </style>
@@ -172,38 +201,32 @@ color:#777;
 
 <body>
 
+<div class="cursor" id="cursor"></div>
+
 <nav>
-<h1>Sadafmade.it</h1>
-<button onclick="scrollContact()">Collaborate</button>
+<h3>Sadafmade.it</h3>
+<button onclick="scrollContact()">Contact</button>
 </nav>
 
-<section class="hero">
-
-<video autoplay muted loop>
-<source src="hero-video.mp4" type="video/mp4">
-</video>
-
-<div class="hero-content">
-
-<h1>Stories. In Motion.</h1>
+<section class="hero fade-up">
+<div>
+<h1>Stories in Motion</h1>
 
 <p>
-Premium cinematic storytelling crafted in Pune.  
-Digital Creator documenting random stories, one frame at a time.
+I create engaging reels and cinematic edits that capture attention within seconds.
+From concept to final cut, every detail is designed to elevate your content and stand out.
 </p>
 
-<div class="buttons">
-<button onclick="scrollFeatured()">Watch Featured</button>
-<button onclick="openInstagram()">View Instagram</button>
+<button onclick="scrollContact()">Hire Me</button>
 </div>
-
-</div>
-
 </section>
 
-<section class="section" id="featured">
+<section class="section fade-up">
+<h2>Featured Work</h2>
 
-<h2>Trending Projects</h2>
+<p>
+A selection of my recent projects showcasing different styles and storytelling.
+</p>
 
 <div class="reels">
 
@@ -224,96 +247,81 @@ Digital Creator documenting random stories, one frame at a time.
 </div>
 
 </div>
-
 </section>
 
-<section class="section stats">
+<section class="section fade-up">
+<h2>Behind The Work</h2>
 
-<h2>Built For Impact</h2>
-
-<div class="stats-grid">
-<div>223K+ Total Views</div>
-<div>Growing Reel Portfolio</div>
-<div>Cinematic Storytelling</div>
-</div>
-
+<p>
+Every reel is crafted with intention — from color grading to storytelling flow.
+I focus on emotion, pacing, and cinematic visuals to make content feel like a film.
+</p>
 </section>
 
-<section class="section">
-
-<h2 style="text-align:center">Services</h2>
+<section class="section fade-up">
+<h2>Workflow</h2>
 
 <div class="services">
-
-<div class="service">
-<h3>Cinematic Reels Editing</h3>
-<p>Professional color grading and high-end cinematic editing.</p>
+<div class="service">Concept</div>
+<div class="service">Shoot</div>
+<div class="service">Edit</div>
+<div class="service">Deliver</div>
 </div>
-
-<div class="service">
-<h3>Brand Campaigns</h3>
-<p>Creative storytelling for brands and businesses.</p>
-</div>
-
-<div class="service">
-<h3>Creative Direction</h3>
-<p>Planning visual concepts and storytelling strategies.</p>
-</div>
-
-</div>
-
 </section>
 
-<section class="section contact" id="contact">
+<section class="section fade-up">
+<h2>Why Choose Me</h2>
 
-<h2>Let’s Create Something Powerful</h2>
-
-<p>For collaborations message via Instagram or Email.</p>
-
-<div style="max-width:500px;margin:auto">
-
-<input placeholder="Your Name">
-<input placeholder="Your Email">
-<textarea placeholder="Project Details"></textarea>
-
-<button onclick="sendEmail()" style="width:100%;background:white;color:black;">
-Send Inquiry
-</button>
-
+<div class="services">
+<div class="service">Cinematic Quality</div>
+<div class="service">Fast Delivery</div>
+<div class="service">Creative Direction</div>
+<div class="service">Attention to Detail</div>
 </div>
-
-<br><br>
-
-<p onclick="openInstagram()" style="cursor:pointer">@sadafmade.it</p>
-
-<p onclick="sendEmail()" style="cursor:pointer">
-sadafmadeit@gmail.com
-</p>
-
 </section>
 
-<footer>
+<section class="section contact fade-up" id="contact">
+<h2>Contact</h2>
 
-© 2026 Sadafmade.it — Premium Cinematic Visuals
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea placeholder="Project"></textarea>
 
-</footer>
+<button>Send</button>
+</section>
+
+<footer>© 2026 Sadafmade.it</footer>
 
 <script>
 
-function openInstagram(){
-window.open("https://www.instagram.com/sadafmade.it","_blank");
+// Scroll animation
+const elements=document.querySelectorAll('.fade-up');
+window.addEventListener('scroll',()=>{
+elements.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add('show');
 }
+});
+});
 
-function scrollFeatured(){
-document.getElementById("featured").scrollIntoView({behavior:"smooth"});
-}
+// Cursor
+const cursor=document.getElementById("cursor");
+
+document.addEventListener("mousemove",e=>{
+cursor.style.top=e.clientY+"px";
+cursor.style.left=e.clientX+"px";
+});
+
+document.querySelectorAll("button,.reel,.service").forEach(el=>{
+el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-grow"));
+el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
+});
+
+document.addEventListener("mousedown",()=>cursor.classList.add("cursor-click"));
+document.addEventListener("mouseup",()=>cursor.classList.remove("cursor-click"));
 
 function scrollContact(){
 document.getElementById("contact").scrollIntoView({behavior:"smooth"});
-}
-
-function sendEmail(){
-window.location.href="mailto:sadafmadeit@gmail.com";
 }
 
 </script>
