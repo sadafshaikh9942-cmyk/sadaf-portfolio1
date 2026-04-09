@@ -61,7 +61,8 @@ position:absolute;
 left:40px;
 }
 
-nav button{
+/* GLOBAL BUTTON STYLE */
+button{
 background:var(--dark);
 color:white;
 border:none;
@@ -69,8 +70,14 @@ padding:10px 22px;
 border-radius:30px;
 font-weight:600;
 cursor:pointer;
+transition:0.3s ease;
 }
-nav button:hover{background:var(--blue);}
+
+/* UNIVERSAL HOVER */
+button:hover{
+background:var(--blue);
+color:var(--white);
+}
 
 /* Hero */
 .hero{
@@ -94,18 +101,6 @@ margin:20px auto;
 font-weight:700;
 line-height:1.7;
 }
-
-.hero button{
-margin-top:20px;
-background:var(--dark);
-color:white;
-padding:12px 26px;
-border:none;
-border-radius:30px;
-font-weight:600;
-cursor:pointer;
-}
-.hero button:hover{background:var(--blue);}
 
 /* Sections */
 .section{
@@ -171,14 +166,7 @@ border:none;
 .contact button{
 width:100%;
 padding:14px;
-background:var(--dark);
-color:white;
-border:none;
-border-radius:30px;
-font-weight:600;
-cursor:pointer;
 }
-.contact button:hover{background:var(--blue);}
 
 footer{
 padding:30px;
