@@ -36,7 +36,7 @@ button, .reel, .service, a{
 cursor:none;
 }
 
-/* ================= PARALLAX BACKGROUND ================= */
+/* PARALLAX BACKGROUND */
 .parallax-bg{
 position:fixed;
 top:0;
@@ -49,7 +49,7 @@ transform:translateY(0);
 will-change:transform;
 }
 
-/* ================= CURSOR ================= */
+/* CURSOR */
 .cursor{
 width:14px;
 height:14px;
@@ -73,18 +73,25 @@ transform:translate(-50%,-50%) scale(1.5);
 background:white;
 }
 
-/* NAV */
+/* NAVBAR (UPDATED LEFT ALIGN) */
 nav{
 position:fixed;
 top:0;
 width:100%;
 display:flex;
-justify-content:center;
+justify-content:flex-start; /* 👈 LEFT ALIGN */
 align-items:center;
 padding:15px 40px;
 background:rgba(255,255,255,0.4);
 backdrop-filter:blur(15px);
 z-index:1000;
+gap:20px;
+}
+
+nav h3{
+margin:0;
+font-size:18px;
+font-weight:700;
 }
 
 /* BUTTONS */
@@ -231,7 +238,6 @@ opacity:0.8;
 
 <body>
 
-<!-- PARALLAX BACKGROUND -->
 <div class="parallax-bg" id="parallaxBg"></div>
 
 <div class="cursor" id="cursor"></div>
@@ -312,7 +318,7 @@ entry.target.classList.add('show');
 
 elements.forEach(el=>observer.observe(el));
 
-/* SMOOTH CURSOR */
+/* CURSOR */
 const cursor=document.getElementById("cursor");
 
 let mouseX=0, mouseY=0;
@@ -340,11 +346,10 @@ el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-grow"));
 el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
 });
 
-/* CLICK */
 document.addEventListener("mousedown",()=>cursor.classList.add("cursor-click"));
 document.addEventListener("mouseup",()=>cursor.classList.remove("cursor-click"));
 
-/* PARALLAX EFFECT */
+/* PARALLAX */
 const bg=document.getElementById("parallaxBg");
 const hero=document.getElementById("heroContent");
 
@@ -352,15 +357,11 @@ window.addEventListener("scroll",()=>{
 
 let scrollY=window.scrollY;
 
-/* background slow move */
 bg.style.transform=`translateY(${scrollY*0.3}px)`;
-
-/* hero depth move */
 hero.style.transform=`translateY(${scrollY*0.2}px)`;
 
 });
 
-/* SCROLL */
 function scrollContact(){
 document.getElementById("contact").scrollIntoView({behavior:"smooth"});
 }
