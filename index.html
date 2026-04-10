@@ -17,9 +17,7 @@
 --white:#ffffff;
 }
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
 margin:0;
@@ -31,10 +29,8 @@ cursor:none;
 text-align:center;
 }
 
-/* remove default cursor */
-button,.reel,.service,a{
-cursor:none;
-}
+/* cursor disable */
+button,.reel,.service,a{cursor:none;}
 
 /* CURSOR */
 .cursor{
@@ -46,7 +42,7 @@ position:fixed;
 pointer-events:none;
 z-index:2000;
 transform:translate(-50%,-50%);
-transition:0.2s ease;
+transition:transform 0.08s ease;
 box-shadow:0 0 12px var(--blue);
 }
 
@@ -60,7 +56,7 @@ transform:translate(-50%,-50%) scale(1.5);
 background:white;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
 position:fixed;
 top:0;
@@ -128,8 +124,8 @@ border:none;
 padding:12px 26px;
 border-radius:30px;
 font-weight:600;
-cursor:none;
 transition:0.3s ease;
+cursor:none;
 }
 
 .insta-btn:hover{
@@ -210,7 +206,7 @@ width:100%;
 padding:14px;
 }
 
-/* FADE ANIMATION */
+/* FADE */
 .fade-up{
 opacity:0;
 transform:translateY(40px);
@@ -236,7 +232,7 @@ opacity:0.8;
 
 <div class="cursor" id="cursor"></div>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
 <h3 class="logo">Sadafmade.it</h3>
 <button onclick="openInsta()">Instagram</button>
@@ -249,11 +245,9 @@ opacity:0.8;
 <h1>Stories in Motion</h1>
 
 <p>
-I create cinematic reels that capture attention in seconds.
-Emotion. Depth. Storytelling.
+Cinematic reels crafted with emotion, depth, and storytelling.
 </p>
 
-<!-- INSTAGRAM BUTTON ADDED HERE -->
 <button class="insta-btn" onclick="openInsta()">View Insta Page</button>
 
 </div>
@@ -282,7 +276,7 @@ Emotion. Depth. Storytelling.
 </div>
 </section>
 
-<!-- WHY CHOOSE ME -->
+<!-- WHY -->
 <section class="section fade-up">
 <h2>Why Choose Me</h2>
 <div class="services">
@@ -306,30 +300,30 @@ Emotion. Depth. Storytelling.
 
 <script>
 
-/* INSTAGRAM LINK */
-function openInsta(){
-window.open("https://www.instagram.com/sadafmade.it?igsh=MXUxa3NzNnByaXlwcQ%3D%3D&utm_source=qr","_blank");
-}
+/* 🔥 SMOOTH CURSOR FIX */
+const cursor = document.getElementById("cursor");
 
-/* CURSOR */
-const cursor=document.getElementById("cursor");
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
 
-let mx=0,my=0,cx=0,cy=0;
-
-document.addEventListener("mousemove",(e)=>{
-mx=e.clientX;
-my=e.clientY;
+document.addEventListener("mousemove", (e) => {
+mouseX = e.clientX;
+mouseY = e.clientY;
 });
 
-function animate(){
-cx+=(mx-cx)*0.15;
-cy+=(my-cy)*0.15;
-cursor.style.left=cx+"px";
-cursor.style.top=cy+"px";
-requestAnimationFrame(animate);
-}
-animate();
+function animateCursor() {
+currentX += (mouseX - currentX) * 0.25;
+currentY += (mouseY - currentY) * 0.25;
 
+cursor.style.left = currentX + "px";
+cursor.style.top = currentY + "px";
+
+requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+/* CURSOR EFFECTS */
 document.querySelectorAll("button,.reel,.service").forEach(el=>{
 el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-grow"));
 el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
@@ -338,7 +332,12 @@ el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
 document.addEventListener("mousedown",()=>cursor.classList.add("cursor-click"));
 document.addEventListener("mouseup",()=>cursor.classList.remove("cursor-click"));
 
-/* FADE ANIMATION */
+/* INSTAGRAM */
+function openInsta(){
+window.open("https://www.instagram.com/sadafmade.it?igsh=MXUxa3NzNnByaXlwcQ%3D%3D&utm_source=qr","_blank");
+}
+
+/* FADE */
 const elements=document.querySelectorAll('.fade-up');
 
 const observer=new IntersectionObserver(entries=>{
