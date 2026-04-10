@@ -13,7 +13,8 @@
 --yellow:#FFB703;
 --yellow-soft:#FFE082;
 --dark:#121212;
---blue:#0ea5e9;
+--navy:#1f2f46;
+--sea:#0ea5e9;
 }
 
 html{scroll-behavior:smooth;}
@@ -21,11 +22,43 @@ html{scroll-behavior:smooth;}
 body{
 margin:0;
 font-family:'Poppins', sans-serif;
-background:linear-gradient(180deg, rgba(255,183,3,0.85), rgba(255,224,130,0.85));
+background:linear-gradient(180deg, rgba(255,183,3,0.9), rgba(255,224,130,0.9));
 color:var(--dark);
 overflow-x:hidden;
 cursor:none;
 text-align:center;
+}
+
+/* ===== LIQUID BACKGROUND ===== */
+.liquid-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+overflow:hidden;
+}
+
+.blob{
+position:absolute;
+width:600px;
+height:600px;
+border-radius:50%;
+filter:url(#goo);
+opacity:0.6;
+animation:moveBlob 20s infinite ease-in-out alternate;
+}
+
+.blob1{background:#1f2f46; top:10%; left:10%;}
+.blob2{background:#22324a; top:40%; left:60%; animation-delay:5s;}
+.blob3{background:#0f172a; top:65%; left:20%; animation-delay:10s;}
+.blob4{background:#1e293b; top:20%; left:75%; animation-delay:7s;}
+
+@keyframes moveBlob{
+0%{transform:translate(0,0) scale(1);}
+50%{transform:translate(80px,-60px) scale(1.2);}
+100%{transform:translate(-60px,80px) scale(0.9);}
 }
 
 /* ===== LOADER ===== */
@@ -49,51 +82,9 @@ position:fixed;
 top:0;
 left:0;
 height:4px;
-background:var(--blue);
+background:var(--navy);
 width:0%;
 z-index:2000;
-}
-
-/* ===== WAVE ===== */
-.wave-bg{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-height:100vh;
-z-index:-1;
-overflow:hidden;
-pointer-events:none;
-}
-
-.wave{
-position:absolute;
-bottom:0;
-width:100%;
-height:260px;
-overflow:hidden;
-}
-
-.wave-track{
-display:flex;
-width:200%;
-animation:waveMove 6s linear infinite;
-}
-
-.wave svg{
-width:50%;
-height:100%;
-display:block;
-}
-
-.wave path{
-fill:var(--blue);
-fill-opacity:0.45;
-}
-
-@keyframes waveMove{
-0%{transform:translateX(0);}
-100%{transform:translateX(-50%);}
 }
 
 /* ===== CURSOR ===== */
@@ -101,13 +92,13 @@ fill-opacity:0.45;
 width:14px;
 height:14px;
 border-radius:50%;
-background:var(--blue);
+background:var(--navy);
 position:fixed;
 pointer-events:none;
 z-index:2000;
 transform:translate(-50%,-50%);
 transition:transform 0.08s ease;
-box-shadow:0 0 20px var(--blue), 0 0 40px var(--blue);
+box-shadow:0 0 20px var(--navy), 0 0 40px var(--navy);
 }
 
 .cursor-grow{transform:translate(-50%,-50%) scale(2.5);background:var(--yellow);}
@@ -130,9 +121,10 @@ z-index:1000;
 
 .logo{font-size:18px;font-weight:700;}
 
+/* ===== BUTTONS (WHITE → SEA BLUE) ===== */
 button{
-background:var(--dark);
-color:white;
+background:white;
+color:var(--dark);
 border:none;
 padding:10px 22px;
 border-radius:30px;
@@ -142,8 +134,25 @@ cursor:pointer;
 }
 
 button:hover{
-background:var(--blue);
+background:var(--sea);
+color:white;
 transform:translateY(-2px);
+}
+
+/* ===== INSTAGRAM BUTTON ===== */
+.insta-btn{
+margin-top:15px;
+background:#E1306C;
+color:white;
+padding:12px 26px;
+border-radius:30px;
+font-weight:600;
+transition:0.3s ease;
+}
+
+.insta-btn:hover{
+background:var(--sea);
+transform:translateY(-3px) scale(1.05);
 }
 
 /* HERO */
@@ -157,7 +166,7 @@ padding:20px;
 
 .hero h1{
 font-size:64px;
-background:linear-gradient(90deg,var(--dark),var(--blue));
+background:linear-gradient(90deg,var(--dark),var(--navy));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
@@ -169,21 +178,6 @@ font-weight:700;
 line-height:1.7;
 }
 
-.insta-btn{
-margin-top:15px;
-background:#E1306C;
-color:white;
-padding:12px 26px;
-border-radius:30px;
-font-weight:600;
-transition:0.3s ease;
-}
-
-.insta-btn:hover{
-background:var(--blue);
-transform:translateY(-3px) scale(1.05);
-}
-
 /* SECTIONS */
 .section{
 padding:100px 20px;
@@ -192,7 +186,7 @@ margin:auto;
 }
 
 h2{
-color:var(--blue);
+color:var(--navy);
 font-size:32px;
 margin-bottom:10px;
 }
@@ -246,7 +240,7 @@ transition:0.3s ease;
 }
 
 .service:hover{
-background:var(--blue);
+background:var(--navy);
 color:white;
 transform:translateY(-8px) scale(1.03);
 }
@@ -274,29 +268,32 @@ opacity:0.8;
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-<h1>Sadafmade.it</h1>
+<!-- LIQUID BACKGROUND -->
+<div class="liquid-bg">
+<svg width="0" height="0">
+<filter id="goo">
+<feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur"/>
+<feColorMatrix in="blur" mode="matrix"
+values="1 0 0 0 0  
+        0 1 0 0 0  
+        0 0 1 0 0  
+        0 0 0 20 -10"/>
+</filter>
+</svg>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+<div class="blob blob4"></div>
 </div>
+
+<!-- LOADER -->
+<div id="loader"><h1>Sadafmade.it</h1></div>
 
 <!-- SCROLL BAR -->
 <div id="scrollBar"></div>
 
 <div class="cursor" id="cursor"></div>
-
-<!-- WAVE -->
-<div class="wave-bg">
-  <div class="wave">
-    <div class="wave-track">
-      <svg viewBox="0 0 1440 320">
-        <path d="M0,160L60,165C120,171,240,181,360,176C480,171,600,149,720,144C840,139,960,149,1080,160C1200,171,1320,181,1440,192L1440,320L0,320Z"></path>
-      </svg>
-      <svg viewBox="0 0 1440 320">
-        <path d="M0,160L60,165C120,171,240,181,360,176C480,171,600,149,720,144C840,139,960,149,1080,160C1200,171,1320,181,1440,192L1440,320L0,320Z"></path>
-      </svg>
-    </div>
-  </div>
-</div>
 
 <nav>
 <h3 class="logo">Sadafmade.it</h3>
@@ -365,20 +362,17 @@ Every reel I create is designed to capture attention and leave impact.
 
 <script>
 
-/* LOADER FIX (FAST + SAFE) */
 document.addEventListener("DOMContentLoaded",()=>{
-const loader = document.getElementById("loader");
+const loader=document.getElementById("loader");
 loader.style.opacity="0";
 setTimeout(()=>{loader.style.display="none";},500);
 });
 
-/* BACKUP */
 setTimeout(()=>{
-const loader = document.getElementById("loader");
-if(loader){ loader.style.display="none"; }
+const loader=document.getElementById("loader");
+if(loader){loader.style.display="none";}
 },2500);
 
-/* SCROLL BAR */
 window.addEventListener("scroll",()=>{
 let scrollTop=document.documentElement.scrollTop;
 let height=document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -386,7 +380,6 @@ let scrolled=(scrollTop/height)*100;
 document.getElementById("scrollBar").style.width=scrolled+"%";
 });
 
-/* CURSOR */
 const cursor=document.getElementById("cursor");
 let mouseX=0,mouseY=0,currentX=0,currentY=0;
 
@@ -416,7 +409,6 @@ function openInsta(){
 window.open("https://www.instagram.com/sadafmade.it","_blank");
 }
 
-/* FADE */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
