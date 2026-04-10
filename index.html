@@ -42,45 +42,23 @@ overflow:hidden;
 
 .blob{
 position:absolute;
-width:520px;
-height:520px;
-background:#1f2f46;
+width:600px;
+height:600px;
+border-radius:50%;
 filter:url(#goo);
-opacity:0.7;
-
-/* organic shape */
-border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
-
-animation: liquidMove 22s infinite ease-in-out;
+animation:moveBlob 20s infinite ease-in-out alternate;
 }
 
-/* OVERLAPPING FOR GOO EFFECT */
-.blob1{top:20%; left:20%;}
-.blob2{top:30%; left:50%; animation-delay:4s;}
-.blob3{top:55%; left:35%; animation-delay:8s;}
-.blob4{top:15%; left:65%; animation-delay:6s;}
+/* ALL BLOBS PURE NAVY */
+.blob1{background:#1f2f46; opacity:0.7; top:10%; left:10%;}
+.blob2{background:#1f2f46; opacity:0.5; top:40%; left:60%; animation-delay:5s;}
+.blob3{background:#1f2f46; opacity:0.4; top:65%; left:20%; animation-delay:10s;}
+.blob4{background:#1f2f46; opacity:0.6; top:20%; left:75%; animation-delay:7s;}
 
-@keyframes liquidMove{
-0%{
-transform:translate(0,0) scale(1);
-border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
-}
-25%{
-transform:translate(100px,-80px) scale(1.2);
-border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
-}
-50%{
-transform:translate(-80px,100px) scale(0.9);
-border-radius: 50% 50% 40% 60% / 60% 45% 55% 40%;
-}
-75%{
-transform:translate(60px,40px) scale(1.1);
-border-radius: 55% 45% 65% 35% / 40% 60% 45% 55%;
-}
-100%{
-transform:translate(0,0) scale(1);
-border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
-}
+@keyframes moveBlob{
+0%{transform:translate(0,0) scale(1);}
+50%{transform:translate(80px,-60px) scale(1.2);}
+100%{transform:translate(-60px,80px) scale(0.9);}
 }
 
 /* ===== LOADER ===== */
@@ -292,16 +270,14 @@ opacity:0.8;
 
 <!-- LIQUID BACKGROUND -->
 <div class="liquid-bg">
-
 <svg width="0" height="0">
 <filter id="goo">
-  <feGaussianBlur in="SourceGraphic" stdDeviation="60" result="blur"/>
-  <feColorMatrix in="blur" mode="matrix"
-    values="1 0 0 0 0  
-            0 1 0 0 0  
-            0 0 1 0 0  
-            0 0 0 35 -15"/>
-  <feBlend in="SourceGraphic" in2="blur"/>
+<feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur"/>
+<feColorMatrix in="blur" mode="matrix"
+values="1 0 0 0 0  
+        0 1 0 0 0  
+        0 0 1 0 0  
+        0 0 0 20 -10"/>
 </filter>
 </svg>
 
@@ -309,7 +285,6 @@ opacity:0.8;
 <div class="blob blob2"></div>
 <div class="blob blob3"></div>
 <div class="blob blob4"></div>
-
 </div>
 
 <!-- LOADER -->
