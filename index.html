@@ -29,10 +29,8 @@ cursor:none;
 text-align:center;
 }
 
-/* cursor disable */
 button,.reel,.service,a{cursor:none;}
 
-/* CURSOR */
 .cursor{
 width:14px;
 height:14px;
@@ -46,17 +44,9 @@ transition:transform 0.08s ease;
 box-shadow:0 0 12px var(--blue);
 }
 
-.cursor-grow{
-transform:translate(-50%,-50%) scale(2.5);
-background:var(--yellow);
-}
+.cursor-grow{transform:translate(-50%,-50%) scale(2.5);background:var(--yellow);}
+.cursor-click{transform:translate(-50%,-50%) scale(1.5);background:white;}
 
-.cursor-click{
-transform:translate(-50%,-50%) scale(1.5);
-background:white;
-}
-
-/* NAV */
 nav{
 position:fixed;
 top:0;
@@ -73,13 +63,8 @@ z-index:1000;
 box-sizing:border-box;
 }
 
-.logo{
-margin:0;
-font-size:18px;
-font-weight:700;
-}
+.logo{font-size:18px;font-weight:700;}
 
-/* BUTTON */
 button{
 background:var(--dark);
 color:white;
@@ -90,12 +75,8 @@ font-weight:600;
 transition:0.25s ease;
 }
 
-button:hover{
-background:var(--blue);
-transform:translateY(-2px);
-}
+button:hover{background:var(--blue);transform:translateY(-2px);}
 
-/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -118,7 +99,6 @@ font-weight:700;
 line-height:1.7;
 }
 
-/* INSTAGRAM BUTTON */
 .insta-btn{
 margin-top:15px;
 background:#E1306C;
@@ -128,7 +108,6 @@ padding:12px 26px;
 border-radius:30px;
 font-weight:600;
 transition:0.3s ease;
-cursor:none;
 }
 
 .insta-btn:hover{
@@ -136,7 +115,6 @@ background:var(--blue);
 transform:translateY(-3px) scale(1.05);
 }
 
-/* SECTIONS */
 .section{
 padding:100px 20px;
 max-width:1100px;
@@ -146,10 +124,17 @@ margin:auto;
 h2{
 color:var(--blue);
 font-size:32px;
-margin-bottom:30px;
+margin-bottom:10px;
 }
 
-/* REELS */
+.section p.desc{
+max-width:700px;
+margin:0 auto 30px auto;
+font-weight:600;
+opacity:0.8;
+line-height:1.7;
+}
+
 .reels{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -170,11 +155,8 @@ height:400px;
 border:none;
 }
 
-.reel:hover{
-transform:translateY(-8px) scale(1.02);
-}
+.reel:hover{transform:translateY(-8px) scale(1.02);}
 
-/* SERVICES */
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -195,21 +177,6 @@ color:white;
 transform:translateY(-8px) scale(1.03);
 }
 
-/* CONTACT */
-.contact input,.contact textarea{
-width:100%;
-padding:14px;
-margin:10px 0;
-border:none;
-border-radius:10px;
-}
-
-.contact button{
-width:100%;
-padding:14px;
-}
-
-/* FADE */
 .fade-up{
 opacity:0;
 transform:translateY(40px);
@@ -221,31 +188,10 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* FOOTER */
 footer{
 padding:30px;
 font-weight:600;
 opacity:0.8;
-}
-
-/* RESPONSIVE FIX */
-@media (max-width: 600px){
-nav{
-padding:12px 15px;
-}
-
-.logo{
-font-size:16px;
-}
-
-button{
-padding:8px 16px;
-font-size:13px;
-}
-
-.hero h1{
-font-size:38px;
-}
 }
 
 </style>
@@ -255,63 +201,52 @@ font-size:38px;
 
 <div class="cursor" id="cursor"></div>
 
-<!-- NAV -->
 <nav>
 <h3 class="logo">Sadafmade.it</h3>
 <button onclick="openInsta()">Instagram</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero fade-up">
 <div>
-
 <h1>Stories in Motion</h1>
-
-<p>
-Cinematic reels crafted with emotion, depth, and storytelling.
-</p>
-
+<p>Cinematic reels crafted with emotion, depth, and storytelling.</p>
 <button class="insta-btn" onclick="openInsta()">View Insta Page</button>
-
 </div>
 </section>
 
-<!-- WORK -->
 <section class="section fade-up">
 <h2>Featured Work</h2>
-
-<div class="reels">
-<div class="reel"><iframe src="https://www.instagram.com/reel/DPMDQ9ejRjd/embed"></iframe></div>
-<div class="reel"><iframe src="https://www.instagram.com/reel/DP-vWzHExxb/embed"></iframe></div>
-<div class="reel"><iframe src="https://www.instagram.com/reel/DSkNxg8E1fC/embed"></iframe></div>
-<div class="reel"><iframe src="https://www.instagram.com/reel/DTIyKZLjUHR/embed"></iframe></div>
-</div>
 </section>
 
-<!-- WORKFLOW -->
 <section class="section fade-up">
 <h2>Workflow</h2>
+<p class="desc">
+Every project starts with an idea and evolves into a cinematic visual story. From planning to final delivery, each step is carefully crafted to ensure smooth storytelling, strong visuals, and emotional impact.
+</p>
+
 <div class="services">
-<div class="service">Concept</div>
-<div class="service">Shoot</div>
-<div class="service">Edit</div>
-<div class="service">Deliver</div>
+<div class="service">Concept — Understanding the idea and planning the visual story</div>
+<div class="service">Shoot — Capturing cinematic footage with attention to detail</div>
+<div class="service">Edit — Enhancing visuals, color grading, and storytelling flow</div>
+<div class="service">Deliver — Final polished output ready for reels or branding</div>
 </div>
 </section>
 
-<!-- WHY -->
 <section class="section fade-up">
 <h2>Why Choose Me</h2>
+<p class="desc">
+I focus on creating cinematic content that doesn’t just look good — it feels meaningful. Every frame is designed with creativity, emotion, and precision to help your brand or story stand out.
+</p>
+
 <div class="services">
-<div class="service">Cinematic Quality</div>
-<div class="service">Fast Delivery</div>
-<div class="service">Creative Direction</div>
-<div class="service">Attention to Detail</div>
+<div class="service">Cinematic Quality — Professional storytelling visuals</div>
+<div class="service">Fast Delivery — Quick turnaround without losing quality</div>
+<div class="service">Creative Direction — Unique ideas tailored to your vision</div>
+<div class="service">Attention to Detail — Every frame carefully refined</div>
 </div>
 </section>
 
-<!-- CONTACT -->
-<section class="section contact fade-up">
+<section class="section fade-up contact">
 <h2>Contact</h2>
 <input placeholder="Name">
 <input placeholder="Email">
@@ -323,30 +258,25 @@ Cinematic reels crafted with emotion, depth, and storytelling.
 
 <script>
 
-/* CURSOR */
 const cursor = document.getElementById("cursor");
 
 let mouseX = 0, mouseY = 0;
 let currentX = 0, currentY = 0;
 
-document.addEventListener("mousemove", (e) => {
-mouseX = e.clientX;
-mouseY = e.clientY;
+document.addEventListener("mousemove",(e)=>{
+mouseX=e.clientX;
+mouseY=e.clientY;
 });
 
-function animateCursor() {
-currentX += (mouseX - currentX) * 0.25;
-currentY += (mouseY - currentY) * 0.25;
-
-cursor.style.left = currentX + "px";
-cursor.style.top = currentY + "px";
-
+function animateCursor(){
+currentX += (mouseX-currentX)*0.25;
+currentY += (mouseY-currentY)*0.25;
+cursor.style.left=currentX+"px";
+cursor.style.top=currentY+"px";
 requestAnimationFrame(animateCursor);
 }
-
 animateCursor();
 
-/* CURSOR EFFECTS */
 document.querySelectorAll("button,.reel,.service").forEach(el=>{
 el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-grow"));
 el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
@@ -355,12 +285,10 @@ el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
 document.addEventListener("mousedown",()=>cursor.classList.add("cursor-click"));
 document.addEventListener("mouseup",()=>cursor.classList.remove("cursor-click"));
 
-/* INSTAGRAM */
 function openInsta(){
 window.open("https://www.instagram.com/sadafmade.it?igsh=MXUxa3NzNnByaXlwcQ%3D%3D&utm_source=qr","_blank");
 }
 
-/* FADE */
 const elements=document.querySelectorAll('.fade-up');
 
 const observer=new IntersectionObserver(entries=>{
