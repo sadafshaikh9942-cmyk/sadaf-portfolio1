@@ -60,14 +60,17 @@ background:white;
 nav{
 position:fixed;
 top:0;
+left:0;
+right:0;
 width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 40px;
+padding:15px 20px;
 background:rgba(255,255,255,0.4);
 backdrop-filter:blur(15px);
 z-index:1000;
+box-sizing:border-box;
 }
 
 .logo{
@@ -225,6 +228,26 @@ font-weight:600;
 opacity:0.8;
 }
 
+/* RESPONSIVE FIX */
+@media (max-width: 600px){
+nav{
+padding:12px 15px;
+}
+
+.logo{
+font-size:16px;
+}
+
+button{
+padding:8px 16px;
+font-size:13px;
+}
+
+.hero h1{
+font-size:38px;
+}
+}
+
 </style>
 </head>
 
@@ -300,7 +323,7 @@ Cinematic reels crafted with emotion, depth, and storytelling.
 
 <script>
 
-/* 🔥 SMOOTH CURSOR FIX */
+/* CURSOR */
 const cursor = document.getElementById("cursor");
 
 let mouseX = 0, mouseY = 0;
