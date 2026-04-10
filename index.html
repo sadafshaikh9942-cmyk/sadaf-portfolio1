@@ -46,14 +46,14 @@ width:600px;
 height:600px;
 border-radius:50%;
 filter:url(#goo);
-opacity:0.6;
 animation:moveBlob 20s infinite ease-in-out alternate;
 }
 
-.blob1{background:#1f2f46; top:10%; left:10%;}
-.blob2{background:#22324a; top:40%; left:60%; animation-delay:5s;}
-.blob3{background:#0f172a; top:65%; left:20%; animation-delay:10s;}
-.blob4{background:#1e293b; top:20%; left:75%; animation-delay:7s;}
+/* ALL BLOBS PURE NAVY */
+.blob1{background:#1f2f46; opacity:0.7; top:10%; left:10%;}
+.blob2{background:#1f2f46; opacity:0.5; top:40%; left:60%; animation-delay:5s;}
+.blob3{background:#1f2f46; opacity:0.4; top:65%; left:20%; animation-delay:10s;}
+.blob4{background:#1f2f46; opacity:0.6; top:20%; left:75%; animation-delay:7s;}
 
 @keyframes moveBlob{
 0%{transform:translate(0,0) scale(1);}
@@ -121,7 +121,7 @@ z-index:1000;
 
 .logo{font-size:18px;font-weight:700;}
 
-/* ===== BUTTONS (WHITE → SEA BLUE) ===== */
+/* ===== BUTTONS ===== */
 button{
 background:white;
 color:var(--dark);
