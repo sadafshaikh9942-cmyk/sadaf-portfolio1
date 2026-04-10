@@ -31,12 +31,12 @@ cursor:none;
 text-align:center;
 }
 
-/* REMOVE DEFAULT CURSOR */
+/* remove default cursor */
 button, .reel, .service, a{
 cursor:none;
 }
 
-/* PARALLAX BACKGROUND */
+/* PARALLAX BG */
 .parallax-bg{
 position:fixed;
 top:0;
@@ -45,11 +45,10 @@ width:100%;
 height:120%;
 background:linear-gradient(180deg,var(--yellow),var(--yellow-soft));
 z-index:-1;
-transform:translateY(0);
 will-change:transform;
 }
 
-/* CURSOR */
+/* CUSTOM CURSOR */
 .cursor{
 width:14px;
 height:14px;
@@ -73,28 +72,28 @@ transform:translate(-50%,-50%) scale(1.5);
 background:white;
 }
 
-/* NAVBAR (UPDATED LEFT ALIGN) */
+/* NAVBAR FIXED */
 nav{
 position:fixed;
 top:0;
 width:100%;
 display:flex;
-justify-content:flex-start; /* 👈 LEFT ALIGN */
+justify-content:space-between; /* ✅ LEFT + RIGHT FIX */
 align-items:center;
 padding:15px 40px;
 background:rgba(255,255,255,0.4);
 backdrop-filter:blur(15px);
 z-index:1000;
-gap:20px;
 }
 
-nav h3{
+/* TITLE LEFT */
+.logo{
 margin:0;
 font-size:18px;
 font-weight:700;
 }
 
-/* BUTTONS */
+/* BUTTON */
 button{
 background:var(--dark);
 color:white;
@@ -117,11 +116,9 @@ display:flex;
 justify-content:center;
 align-items:center;
 padding:20px;
-position:relative;
 }
 
 .hero-content{
-transform:translateY(0);
 will-change:transform;
 }
 
@@ -195,7 +192,7 @@ font-weight:600;
 
 .service:hover{
 background:var(--blue);
-color:var(--white);
+color:white;
 transform:translateY(-8px) scale(1.03);
 }
 
@@ -239,14 +236,15 @@ opacity:0.8;
 <body>
 
 <div class="parallax-bg" id="parallaxBg"></div>
-
 <div class="cursor" id="cursor"></div>
 
+<!-- NAVBAR FIXED -->
 <nav>
-<h3>Sadafmade.it</h3>
+<h3 class="logo">Sadafmade.it</h3>
 <button onclick="scrollContact()">Contact</button>
 </nav>
 
+<!-- HERO -->
 <section class="hero fade-up">
 <div class="hero-content" id="heroContent">
 
@@ -262,6 +260,7 @@ Every frame is designed with emotion, depth, and storytelling.
 </div>
 </section>
 
+<!-- WORK -->
 <section class="section fade-up">
 <h2>Featured Work</h2>
 
@@ -273,6 +272,7 @@ Every frame is designed with emotion, depth, and storytelling.
 </div>
 </section>
 
+<!-- WORKFLOW -->
 <section class="section fade-up">
 <h2>Workflow</h2>
 <div class="services">
@@ -283,6 +283,7 @@ Every frame is designed with emotion, depth, and storytelling.
 </div>
 </section>
 
+<!-- WHY CHOOSE ME -->
 <section class="section fade-up">
 <h2>Why Choose Me</h2>
 <div class="services">
@@ -293,6 +294,7 @@ Every frame is designed with emotion, depth, and storytelling.
 </div>
 </section>
 
+<!-- CONTACT -->
 <section class="section contact fade-up" id="contact">
 <h2>Contact</h2>
 <input placeholder="Name">
