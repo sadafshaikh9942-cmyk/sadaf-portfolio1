@@ -17,9 +17,7 @@
 --white:#ffffff;
 }
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
 margin:0;
@@ -31,34 +29,27 @@ cursor:none;
 text-align:center;
 }
 
-/* remove default cursor */
-button, .reel, .service, a{
-cursor:none;
-}
+/* cursor */
+button,.reel,.service,a{cursor:none;}
 
-/* PARALLAX BG */
 .parallax-bg{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:120%;
+top:0;left:0;
+width:100%;height:120%;
 background:linear-gradient(180deg,var(--yellow),var(--yellow-soft));
 z-index:-1;
 will-change:transform;
 }
 
-/* CUSTOM CURSOR */
 .cursor{
-width:14px;
-height:14px;
+width:14px;height:14px;
 border-radius:50%;
 background:var(--blue);
 position:fixed;
 pointer-events:none;
 z-index:2000;
 transform:translate(-50%,-50%);
-transition:background 0.2s ease, transform 0.1s ease;
+transition:0.2s;
 box-shadow:0 0 12px var(--blue);
 }
 
@@ -72,13 +63,13 @@ transform:translate(-50%,-50%) scale(1.5);
 background:white;
 }
 
-/* NAVBAR FIXED */
+/* NAVBAR FIX */
 nav{
 position:fixed;
 top:0;
 width:100%;
 display:flex;
-justify-content:space-between; /* ✅ LEFT + RIGHT FIX */
+justify-content:space-between;
 align-items:center;
 padding:15px 40px;
 background:rgba(255,255,255,0.4);
@@ -86,14 +77,12 @@ backdrop-filter:blur(15px);
 z-index:1000;
 }
 
-/* TITLE LEFT */
 .logo{
 margin:0;
 font-size:18px;
 font-weight:700;
 }
 
-/* BUTTON */
 button{
 background:var(--dark);
 color:white;
@@ -101,7 +90,7 @@ border:none;
 padding:10px 22px;
 border-radius:30px;
 font-weight:600;
-transition:0.25s ease;
+transition:0.25s;
 }
 
 button:hover{
@@ -116,10 +105,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 padding:20px;
-}
-
-.hero-content{
-will-change:transform;
 }
 
 .hero h1{
@@ -137,17 +122,9 @@ line-height:1.7;
 }
 
 /* SECTIONS */
-.section{
-padding:100px 20px;
-max-width:1100px;
-margin:auto;
-}
+.section{padding:100px 20px;max-width:1100px;margin:auto;}
 
-h2{
-color:var(--blue);
-font-size:32px;
-margin-bottom:30px;
-}
+h2{color:var(--blue);font-size:32px;margin-bottom:30px;}
 
 /* REELS */
 .reels{
@@ -161,7 +138,7 @@ border-radius:20px;
 overflow:hidden;
 background:white;
 box-shadow:0 15px 40px rgba(0,0,0,0.1);
-transition:0.3s ease;
+transition:0.3s;
 }
 
 .reel iframe{
@@ -185,9 +162,8 @@ gap:25px;
 background:white;
 padding:30px;
 border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-transition:0.3s ease;
 font-weight:600;
+transition:0.3s;
 }
 
 .service:hover{
@@ -197,13 +173,12 @@ transform:translateY(-8px) scale(1.03);
 }
 
 /* CONTACT */
-.contact input, .contact textarea{
+.contact input,.contact textarea{
 width:100%;
 padding:14px;
 margin:10px 0;
-border-radius:10px;
 border:none;
-outline:none;
+border-radius:10px;
 }
 
 .contact button{
@@ -211,11 +186,11 @@ width:100%;
 padding:14px;
 }
 
-/* FADE ANIMATION */
+/* FADE */
 .fade-up{
 opacity:0;
 transform:translateY(40px);
-transition:all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+transition:0.9s ease;
 }
 
 .fade-up.show{
@@ -238,24 +213,24 @@ opacity:0.8;
 <div class="parallax-bg" id="parallaxBg"></div>
 <div class="cursor" id="cursor"></div>
 
-<!-- NAVBAR FIXED -->
+<!-- NAV -->
 <nav>
 <h3 class="logo">Sadafmade.it</h3>
-<button onclick="scrollContact()">Contact</button>
+<button onclick="openInsta()">Instagram</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero fade-up">
-<div class="hero-content" id="heroContent">
+<div>
 
 <h1>Stories in Motion</h1>
 
 <p>
 I create cinematic reels that capture attention in seconds.
-Every frame is designed with emotion, depth, and storytelling.
+Emotion. Depth. Storytelling.
 </p>
 
-<button onclick="scrollContact()">Hire Me</button>
+<button onclick="openInsta()">Visit Instagram</button>
 
 </div>
 </section>
@@ -283,7 +258,7 @@ Every frame is designed with emotion, depth, and storytelling.
 </div>
 </section>
 
-<!-- WHY CHOOSE ME -->
+<!-- WHY -->
 <section class="section fade-up">
 <h2>Why Choose Me</h2>
 <div class="services">
@@ -295,26 +270,29 @@ Every frame is designed with emotion, depth, and storytelling.
 </section>
 
 <!-- CONTACT -->
-<section class="section contact fade-up" id="contact">
+<section class="section contact fade-up">
 <h2>Contact</h2>
 <input placeholder="Name">
 <input placeholder="Email">
 <textarea placeholder="Project"></textarea>
-<button>Send</button>
+<button onclick="openInsta()">Send via Instagram</button>
 </section>
 
 <footer>© 2026 Sadafmade.it</footer>
 
 <script>
 
-/* FADE IN */
+/* INSTAGRAM REDIRECT */
+function openInsta(){
+window.open("https://instagram.com/sadafmade.it","_blank");
+}
+
+/* FADE */
 const elements=document.querySelectorAll('.fade-up');
 
 const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('show');
-}
+entries.forEach(e=>{
+if(e.isIntersecting) e.target.classList.add('show');
 });
 },{threshold:0.15});
 
@@ -323,26 +301,22 @@ elements.forEach(el=>observer.observe(el));
 /* CURSOR */
 const cursor=document.getElementById("cursor");
 
-let mouseX=0, mouseY=0;
-let cursorX=0, cursorY=0;
+let mx=0,my=0,cx=0,cy=0;
 
-document.addEventListener("mousemove",(e)=>{
-mouseX=e.clientX;
-mouseY=e.clientY;
+document.addEventListener("mousemove",e=>{
+mx=e.clientX;
+my=e.clientY;
 });
 
-function animateCursor(){
-cursorX += (mouseX - cursorX) * 0.15;
-cursorY += (mouseY - cursorY) * 0.15;
-
-cursor.style.left=cursorX+"px";
-cursor.style.top=cursorY+"px";
-
-requestAnimationFrame(animateCursor);
+function animate(){
+cx+=(mx-cx)*0.15;
+cy+=(my-cy)*0.15;
+cursor.style.left=cx+"px";
+cursor.style.top=cy+"px";
+requestAnimationFrame(animate);
 }
-animateCursor();
+animate();
 
-/* CURSOR EFFECTS */
 document.querySelectorAll("button,.reel,.service").forEach(el=>{
 el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-grow"));
 el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
@@ -353,20 +327,13 @@ document.addEventListener("mouseup",()=>cursor.classList.remove("cursor-click"))
 
 /* PARALLAX */
 const bg=document.getElementById("parallaxBg");
-const hero=document.getElementById("heroContent");
+const hero=document.querySelector(".hero");
 
 window.addEventListener("scroll",()=>{
-
-let scrollY=window.scrollY;
-
-bg.style.transform=`translateY(${scrollY*0.3}px)`;
-hero.style.transform=`translateY(${scrollY*0.2}px)`;
-
+let y=window.scrollY;
+bg.style.transform=`translateY(${y*0.3}px)`;
+hero.style.transform=`translateY(${y*0.2}px)`;
 });
-
-function scrollContact(){
-document.getElementById("contact").scrollIntoView({behavior:"smooth"});
-}
 
 </script>
 
