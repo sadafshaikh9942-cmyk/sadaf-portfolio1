@@ -13,8 +13,6 @@
 --yellow:#FFB703;
 --yellow-soft:#FFE082;
 --dark:#121212;
-
-/* 🌊 BLUE */
 --blue:#0ea5e9;
 }
 
@@ -30,7 +28,33 @@ cursor:none;
 text-align:center;
 }
 
-/* ===== SINGLE CONTINUOUS WAVE ===== */
+/* ===== LOADER ===== */
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:var(--dark);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+font-size:28px;
+transition:0.6s ease;
+}
+
+/* ===== SCROLL BAR ===== */
+#scrollBar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:var(--blue);
+width:0%;
+z-index:2000;
+}
+
+/* ===== WAVE ===== */
 .wave-bg{
 position:fixed;
 bottom:0;
@@ -72,7 +96,7 @@ fill-opacity:0.45;
 100%{transform:translateX(-50%);}
 }
 
-/* CURSOR */
+/* ===== CURSOR ===== */
 .cursor{
 width:14px;
 height:14px;
@@ -83,7 +107,7 @@ pointer-events:none;
 z-index:2000;
 transform:translate(-50%,-50%);
 transition:transform 0.08s ease;
-box-shadow:0 0 12px var(--blue);
+box-shadow:0 0 20px var(--blue), 0 0 40px var(--blue);
 }
 
 .cursor-grow{transform:translate(-50%,-50%) scale(2.5);background:var(--yellow);}
@@ -95,7 +119,6 @@ position:fixed;
 top:0;
 left:0;
 right:0;
-width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -103,7 +126,6 @@ padding:15px 20px;
 background:rgba(255,255,255,0.4);
 backdrop-filter:blur(15px);
 z-index:1000;
-box-sizing:border-box;
 }
 
 .logo{font-size:18px;font-weight:700;}
@@ -116,6 +138,7 @@ padding:10px 22px;
 border-radius:30px;
 font-weight:600;
 transition:0.25s ease;
+cursor:pointer;
 }
 
 button:hover{
@@ -240,7 +263,6 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* FOOTER */
 footer{
 padding:30px;
 font-weight:600;
@@ -252,9 +274,17 @@ opacity:0.8;
 
 <body>
 
+<!-- LOADER -->
+<div id="loader">
+<h1>Sadafmade.it</h1>
+</div>
+
+<!-- SCROLL BAR -->
+<div id="scrollBar"></div>
+
 <div class="cursor" id="cursor"></div>
 
-<!-- 🌊 SINGLE WAVE -->
+<!-- WAVE -->
 <div class="wave-bg">
   <div class="wave">
     <div class="wave-track">
@@ -279,6 +309,14 @@ opacity:0.8;
 <p>Cinematic reels crafted with emotion, depth, and storytelling.</p>
 <button class="insta-btn" onclick="openInsta()">View Insta Page</button>
 </div>
+</section>
+
+<section class="section fade-up">
+<h2>About Me</h2>
+<p class="desc">
+I’m a cinematic editor focused on storytelling, emotion, and visuals that stand out.
+Every reel I create is designed to capture attention and leave impact.
+</p>
 </section>
 
 <section class="section fade-up">
@@ -326,10 +364,31 @@ opacity:0.8;
 <footer>© 2026 Sadafmade.it</footer>
 
 <script>
-const cursor=document.getElementById("cursor");
 
-let mouseX=0,mouseY=0;
-let currentX=0,currentY=0;
+/* LOADER FIX (FAST + SAFE) */
+document.addEventListener("DOMContentLoaded",()=>{
+const loader = document.getElementById("loader");
+loader.style.opacity="0";
+setTimeout(()=>{loader.style.display="none";},500);
+});
+
+/* BACKUP */
+setTimeout(()=>{
+const loader = document.getElementById("loader");
+if(loader){ loader.style.display="none"; }
+},2500);
+
+/* SCROLL BAR */
+window.addEventListener("scroll",()=>{
+let scrollTop=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight - document.documentElement.clientHeight;
+let scrolled=(scrollTop/height)*100;
+document.getElementById("scrollBar").style.width=scrolled+"%";
+});
+
+/* CURSOR */
+const cursor=document.getElementById("cursor");
+let mouseX=0,mouseY=0,currentX=0,currentY=0;
 
 document.addEventListener("mousemove",(e)=>{
 mouseX=e.clientX;
@@ -354,11 +413,10 @@ document.addEventListener("mousedown",()=>cursor.classList.add("cursor-click"));
 document.addEventListener("mouseup",()=>cursor.classList.remove("cursor-click"));
 
 function openInsta(){
-window.open("https://www.instagram.com/sadafmade.it?igsh=MXUxa3NzNnByaXlwcQ%3D%3D&utm_source=qr","_blank");
+window.open("https://www.instagram.com/sadafmade.it","_blank");
 }
 
-const elements=document.querySelectorAll(".fade-up");
-
+/* FADE */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -367,7 +425,8 @@ entry.target.classList.add("show");
 });
 },{threshold:0.15});
 
-elements.forEach(el=>observer.observe(el));
+document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
+
 </script>
 
 </body>
