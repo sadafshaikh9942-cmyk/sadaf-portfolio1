@@ -17,7 +17,9 @@
 --white:#ffffff;
 }
 
-html{scroll-behavior:smooth;}
+html{
+scroll-behavior:smooth;
+}
 
 body{
 margin:0;
@@ -29,27 +31,22 @@ cursor:none;
 text-align:center;
 }
 
-/* cursor */
-button,.reel,.service,a{cursor:none;}
-
-.parallax-bg{
-position:fixed;
-top:0;left:0;
-width:100%;height:120%;
-background:linear-gradient(180deg,var(--yellow),var(--yellow-soft));
-z-index:-1;
-will-change:transform;
+/* remove default cursor */
+button,.reel,.service,a{
+cursor:none;
 }
 
+/* CURSOR */
 .cursor{
-width:14px;height:14px;
+width:14px;
+height:14px;
 border-radius:50%;
 background:var(--blue);
 position:fixed;
 pointer-events:none;
 z-index:2000;
 transform:translate(-50%,-50%);
-transition:0.2s;
+transition:0.2s ease;
 box-shadow:0 0 12px var(--blue);
 }
 
@@ -63,7 +60,7 @@ transform:translate(-50%,-50%) scale(1.5);
 background:white;
 }
 
-/* NAVBAR FIX */
+/* NAVBAR */
 nav{
 position:fixed;
 top:0;
@@ -83,6 +80,7 @@ font-size:18px;
 font-weight:700;
 }
 
+/* BUTTON */
 button{
 background:var(--dark);
 color:white;
@@ -90,7 +88,7 @@ border:none;
 padding:10px 22px;
 border-radius:30px;
 font-weight:600;
-transition:0.25s;
+transition:0.25s ease;
 }
 
 button:hover{
@@ -121,10 +119,36 @@ font-weight:700;
 line-height:1.7;
 }
 
-/* SECTIONS */
-.section{padding:100px 20px;max-width:1100px;margin:auto;}
+/* INSTAGRAM BUTTON */
+.insta-btn{
+margin-top:15px;
+background:#E1306C;
+color:white;
+border:none;
+padding:12px 26px;
+border-radius:30px;
+font-weight:600;
+cursor:none;
+transition:0.3s ease;
+}
 
-h2{color:var(--blue);font-size:32px;margin-bottom:30px;}
+.insta-btn:hover{
+background:var(--blue);
+transform:translateY(-3px) scale(1.05);
+}
+
+/* SECTIONS */
+.section{
+padding:100px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+color:var(--blue);
+font-size:32px;
+margin-bottom:30px;
+}
 
 /* REELS */
 .reels{
@@ -138,7 +162,7 @@ border-radius:20px;
 overflow:hidden;
 background:white;
 box-shadow:0 15px 40px rgba(0,0,0,0.1);
-transition:0.3s;
+transition:0.3s ease;
 }
 
 .reel iframe{
@@ -163,7 +187,7 @@ background:white;
 padding:30px;
 border-radius:20px;
 font-weight:600;
-transition:0.3s;
+transition:0.3s ease;
 }
 
 .service:hover{
@@ -186,7 +210,7 @@ width:100%;
 padding:14px;
 }
 
-/* FADE */
+/* FADE ANIMATION */
 .fade-up{
 opacity:0;
 transform:translateY(40px);
@@ -210,10 +234,9 @@ opacity:0.8;
 
 <body>
 
-<div class="parallax-bg" id="parallaxBg"></div>
 <div class="cursor" id="cursor"></div>
 
-<!-- NAV -->
+<!-- NAVBAR -->
 <nav>
 <h3 class="logo">Sadafmade.it</h3>
 <button onclick="openInsta()">Instagram</button>
@@ -230,7 +253,8 @@ I create cinematic reels that capture attention in seconds.
 Emotion. Depth. Storytelling.
 </p>
 
-<button onclick="openInsta()">Visit Instagram</button>
+<!-- INSTAGRAM BUTTON ADDED HERE -->
+<button class="insta-btn" onclick="openInsta()">View Insta Page</button>
 
 </div>
 </section>
@@ -258,7 +282,7 @@ Emotion. Depth. Storytelling.
 </div>
 </section>
 
-<!-- WHY -->
+<!-- WHY CHOOSE ME -->
 <section class="section fade-up">
 <h2>Why Choose Me</h2>
 <div class="services">
@@ -282,28 +306,17 @@ Emotion. Depth. Storytelling.
 
 <script>
 
-/* INSTAGRAM REDIRECT */
+/* INSTAGRAM LINK */
 function openInsta(){
-window.open("https://instagram.com/sadafmade.it","_blank");
+window.open("https://www.instagram.com/sadafmade.it?igsh=MXUxa3NzNnByaXlwcQ%3D%3D&utm_source=qr","_blank");
 }
-
-/* FADE */
-const elements=document.querySelectorAll('.fade-up');
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting) e.target.classList.add('show');
-});
-},{threshold:0.15});
-
-elements.forEach(el=>observer.observe(el));
 
 /* CURSOR */
 const cursor=document.getElementById("cursor");
 
 let mx=0,my=0,cx=0,cy=0;
 
-document.addEventListener("mousemove",e=>{
+document.addEventListener("mousemove",(e)=>{
 mx=e.clientX;
 my=e.clientY;
 });
@@ -325,15 +338,18 @@ el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
 document.addEventListener("mousedown",()=>cursor.classList.add("cursor-click"));
 document.addEventListener("mouseup",()=>cursor.classList.remove("cursor-click"));
 
-/* PARALLAX */
-const bg=document.getElementById("parallaxBg");
-const hero=document.querySelector(".hero");
+/* FADE ANIMATION */
+const elements=document.querySelectorAll('.fade-up');
 
-window.addEventListener("scroll",()=>{
-let y=window.scrollY;
-bg.style.transform=`translateY(${y*0.3}px)`;
-hero.style.transform=`translateY(${y*0.2}px)`;
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
 });
+},{threshold:0.15});
+
+elements.forEach(el=>observer.observe(el));
 
 </script>
 
