@@ -30,7 +30,7 @@ cursor:none;
 text-align:center;
 }
 
-/* ===== SINGLE WAVE ===== */
+/* ===== SINGLE CONTINUOUS WAVE ===== */
 .wave-bg{
 position:fixed;
 bottom:0;
@@ -64,7 +64,7 @@ display:block;
 
 .wave path{
 fill:var(--blue);
-fill-opacity:0.45; /* adjust here */
+fill-opacity:0.45;
 }
 
 @keyframes waveMove{
@@ -95,6 +95,7 @@ position:fixed;
 top:0;
 left:0;
 right:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -102,9 +103,10 @@ padding:15px 20px;
 background:rgba(255,255,255,0.4);
 backdrop-filter:blur(15px);
 z-index:1000;
+box-sizing:border-box;
 }
 
-.logo{font-weight:700;}
+.logo{font-size:18px;font-weight:700;}
 
 button{
 background:var(--dark);
@@ -127,6 +129,7 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+padding:20px;
 }
 
 .hero h1{
@@ -140,18 +143,22 @@ background:linear-gradient(90deg,var(--dark),var(--blue));
 max-width:650px;
 margin:20px auto;
 font-weight:700;
+line-height:1.7;
 }
 
 .insta-btn{
 margin-top:15px;
 background:#E1306C;
+color:white;
 padding:12px 26px;
 border-radius:30px;
+font-weight:600;
+transition:0.3s ease;
 }
 
 .insta-btn:hover{
 background:var(--blue);
-transform:translateY(-3px);
+transform:translateY(-3px) scale(1.05);
 }
 
 /* SECTIONS */
@@ -161,8 +168,21 @@ max-width:1100px;
 margin:auto;
 }
 
-h2{color:var(--blue);}
+h2{
+color:var(--blue);
+font-size:32px;
+margin-bottom:10px;
+}
 
+.section p.desc{
+max-width:700px;
+margin:0 auto 30px auto;
+font-weight:600;
+opacity:0.8;
+line-height:1.7;
+}
+
+/* REELS */
 .reels{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -174,6 +194,7 @@ border-radius:20px;
 overflow:hidden;
 background:white;
 box-shadow:0 15px 40px rgba(0,0,0,0.1);
+transition:0.3s ease;
 }
 
 .reel iframe{
@@ -182,6 +203,11 @@ height:400px;
 border:none;
 }
 
+.reel:hover{
+transform:translateY(-8px) scale(1.02);
+}
+
+/* SERVICES */
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -193,12 +219,32 @@ background:white;
 padding:30px;
 border-radius:20px;
 font-weight:600;
+transition:0.3s ease;
+}
+
+.service:hover{
+background:var(--blue);
+color:white;
+transform:translateY(-8px) scale(1.03);
+}
+
+/* FADE */
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+transition:0.9s ease;
+}
+
+.fade-up.show{
+opacity:1;
+transform:translateY(0);
 }
 
 /* FOOTER */
 footer{
 padding:30px;
 font-weight:600;
+opacity:0.8;
 }
 
 </style>
@@ -208,7 +254,7 @@ font-weight:600;
 
 <div class="cursor" id="cursor"></div>
 
-<!-- 🌊 SINGLE CONTINUOUS WAVE -->
+<!-- 🌊 SINGLE WAVE -->
 <div class="wave-bg">
   <div class="wave">
     <div class="wave-track">
@@ -227,12 +273,54 @@ font-weight:600;
 <button onclick="openInsta()">Instagram</button>
 </nav>
 
-<section class="hero">
+<section class="hero fade-up">
 <div>
 <h1>Stories in Motion</h1>
 <p>Cinematic reels crafted with emotion, depth, and storytelling.</p>
 <button class="insta-btn" onclick="openInsta()">View Insta Page</button>
 </div>
+</section>
+
+<section class="section fade-up">
+<h2>Featured Work</h2>
+
+<div class="reels">
+<div class="reel"><iframe src="https://www.instagram.com/reel/DPMDQ9ejRjd/embed"></iframe></div>
+<div class="reel"><iframe src="https://www.instagram.com/reel/DP-vWzHExxb/embed"></iframe></div>
+<div class="reel"><iframe src="https://www.instagram.com/reel/DSkNxg8E1fC/embed"></iframe></div>
+<div class="reel"><iframe src="https://www.instagram.com/reel/DTIyKZLjUHR/embed"></iframe></div>
+</div>
+</section>
+
+<section class="section fade-up">
+<h2>Workflow</h2>
+<p class="desc">From concept to final delivery, every step is designed to create cinematic storytelling.</p>
+
+<div class="services">
+<div class="service">Concept — Idea & planning</div>
+<div class="service">Shoot — Cinematic capture</div>
+<div class="service">Edit — Color & storytelling</div>
+<div class="service">Deliver — Final output</div>
+</div>
+</section>
+
+<section class="section fade-up">
+<h2>Why Choose Me</h2>
+<p class="desc">I create visually powerful cinematic content that connects emotionally and builds identity.</p>
+
+<div class="services">
+<div class="service">Cinematic Quality</div>
+<div class="service">Fast Delivery</div>
+<div class="service">Creative Direction</div>
+<div class="service">Detail Oriented Editing</div>
+</div>
+</section>
+
+<section class="section fade-up">
+<h2>Contact</h2>
+<p class="desc">Let’s work together — reach out via Instagram.</p>
+
+<button class="insta-btn" onclick="openInsta()">Send via Instagram</button>
 </section>
 
 <footer>© 2026 Sadafmade.it</footer>
@@ -257,9 +345,29 @@ requestAnimationFrame(animate);
 }
 animate();
 
+document.querySelectorAll("button,.reel,.service").forEach(el=>{
+el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-grow"));
+el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
+});
+
+document.addEventListener("mousedown",()=>cursor.classList.add("cursor-click"));
+document.addEventListener("mouseup",()=>cursor.classList.remove("cursor-click"));
+
 function openInsta(){
-window.open("https://www.instagram.com/sadafmade.it","_blank");
+window.open("https://www.instagram.com/sadafmade.it?igsh=MXUxa3NzNnByaXlwcQ%3D%3D&utm_source=qr","_blank");
 }
+
+const elements=document.querySelectorAll(".fade-up");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.15});
+
+elements.forEach(el=>observer.observe(el));
 </script>
 
 </body>
